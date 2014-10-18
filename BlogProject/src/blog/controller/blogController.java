@@ -3,14 +3,13 @@ package blog.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import blog.model.dao.MemberDAO;
+import blog.exception.RecordNotFoundException;
 import blog.model.dto.MemberBean;
 import blog.service.BlogManagerment;
 import blog.service.MemberManagerment;
@@ -42,8 +41,16 @@ public class blogController extends HttpServlet {
 			logout(request, response);
 		}else if(action.equals("join")){
 			join(request, response);
+		}else if(action.equals("update")){
+			update(request, response);
+		}else if(action.equals("updateSave")){
+			updateSave(request, response);
 		}
 	}
+	
+
+	
+
 	
 
 	public void login(HttpServletRequest request, HttpServletResponse response) {
@@ -52,8 +59,7 @@ public class blogController extends HttpServlet {
 			String userid = request.getParameter("userid");
 			String userpw = request.getParameter("userpw");
 			//test용 코드
-			
-			MemberBean bean = MemberDAO.selectMemberByID(userid);
+			MemberBean bean = member.selectMemberByID(userid);
 			if(bean!=null){
 				if(bean.getUserpw().equals(userpw)){
 					session.setAttribute("userid", userid);
@@ -69,7 +75,8 @@ public class blogController extends HttpServlet {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RecordNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
@@ -96,6 +103,46 @@ public class blogController extends HttpServlet {
 		try {
 			//MemberDAO.insertMember(bean);
 			member.insertMember(bean);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	private void update(HttpServletRequest request, HttpServletResponse response) {
+		MemberBean bean = new MemberBean();
+		HttpSession session = request.getSession();
+		String userid = (String) session.getAttribute("userid");
+		
+		try {
+			request.setAttribute("bean",member.selectMemberByID(userid));
+			request.setAttribute("page", "member/update.jsp");
+			System.out.println("update 주소 바꿀시점");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (RecordNotFoundException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private void updateSave(HttpServletRequest request,
+			HttpServletResponse response) {
+		MemberBean bean = new MemberBean();
+		bean.setUserid(request.getParameter("id"));
+		bean.setUserpw(request.getParameter("pw"));
+		bean.setPhone(request.getParameter("phone"));
+		bean.setName(request.getParameter("name"));
+		bean.setType('U');
+		bean.setBlogname(request.getParameter("title"));
+		try {
+			member.updateMemberByID(bean);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();

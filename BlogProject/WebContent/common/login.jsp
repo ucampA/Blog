@@ -34,7 +34,7 @@
 			<center>
 				<br>
 				${sessionScope.userid }님 안녕하세요.<br>
-				<a href="#">정보수정</a>
+				<a href="con?action=update">정보수정</a>
 				<a href="con?action=logout">로그아웃</a>
 			</center>
 		</c:otherwise>	

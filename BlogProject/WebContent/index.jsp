@@ -10,12 +10,21 @@
 </head>
 <body>
 	<div id="container">
-		<div id="header"><jsp:include page="common/header.jsp"/>${param.action}</div>
+		<div id="header"><jsp:include page="common/header.jsp"/>...${param.action}...${requestScope.page }</div>
 		
-		<div id="content"><c:if test="${not empty param.page}">
-			<jsp:include page="${param.page}"/></c:if>
-		<c:if test="${empty param.page}">
-			<jsp:include page="blog/blogList.jsp"/></c:if></div>
+		<div id="content">
+			<c:choose>
+				<c:when test="${not empty param.page}">
+					<jsp:include page="${param.page}"/>
+				</c:when>
+				<c:when test="${not empty requestScope.page }">
+					<jsp:include page="${requestScope.page}"/>
+				</c:when>
+				<c:otherwise>
+					<jsp:include page="blog/blogList.jsp"/>
+				</c:otherwise>		
+			</c:choose>
+		</div>
 			
 		<div id="login"><jsp:include page="common/login.jsp"/></div>
 		<div id="menu"><jsp:include page="common/menu.jsp"/></div>

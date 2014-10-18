@@ -41,10 +41,10 @@ public class MemberDAO {
 		}
 	}
 
-	public static int updateMemberByID(String id) throws SQLException {
+	public static int updateMemberByID(MemberBean bean) throws SQLException {
 		SqlSession session = DBUtil.getSqlSession(true);
 		try {
-			return session.update("Member.updateMemberByID", id);
+			return session.update("Member.updateMemberByID", bean);
 		} finally {
 			session.close();
 		}

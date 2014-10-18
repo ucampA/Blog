@@ -13,7 +13,7 @@ public interface MemberManagermentIF {
 	
 	public JSONArray selectMemberList() throws SQLException ,RecordNotFoundException;
 	
-	public void updateMemberByID(String id) throws SQLException;
+	public void updateMemberByID(MemberBean bean) throws SQLException;
 	
 	public void deleteMemberByID(String id) throws SQLException;
 }

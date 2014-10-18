@@ -51,10 +51,10 @@ public class MemberManagerment implements MemberManagermentIF {
 		return list;
 	}
 	
-	public void updateMemberByID(String id) throws SQLException{
+	public void updateMemberByID(MemberBean bean) throws SQLException{
 		int result  = 0;
 		try {
-			result = MemberDAO.updateMemberByID(id);
+			result = MemberDAO.updateMemberByID(bean);
 			if(result == 0){
 				throw new SQLException();
 			}
