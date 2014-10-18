@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import blog.exception.RecordNotFoundException;
+import blog.model.dao.BlogDAO;
 import blog.model.dto.MemberBean;
 import blog.service.BlogManagerment;
 import blog.service.MemberManagerment;
@@ -45,6 +46,8 @@ public class blogController extends HttpServlet {
 			update(request, response);
 		}else if(action.equals("updateSave")){
 			updateSave(request, response);
+		}else if(action.equals("getAllPosts")){
+			getAllPosts(request, response);
 		}
 	}
 
@@ -149,5 +152,18 @@ public class blogController extends HttpServlet {
 		}
 	}
 
-	
+	private void getAllPosts(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setAttribute("postList", BlogManagerment.getInstance().selectAllPosts());
+			request.getRequestDispatcher("index.jsp?page=board/list.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (RecordNotFoundException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
