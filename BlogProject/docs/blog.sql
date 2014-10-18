@@ -21,3 +21,5 @@ CREATE TABLE blog (
 	constraint blog_userid_fk foreign key(userid) references member(userid)
 );
 
+CREATE SEQUENCE seq_blog_no INCREMENT BY 1 START WITH 1;
+
