@@ -10,7 +10,7 @@
 <body>
 
 	<c:choose>
-		<c:when test="${userid==null }">
+		<c:when test="${sessionScope.userid==null }">
 			<form action="con?action=login" method="post" name="loginFrm">
 				<table align="center">
 					<tr>
@@ -33,8 +33,9 @@
 		<c:otherwise>
 			<center>
 				<br>
-				${userid }´Ô ¾È³çÇÏ¼¼¿ä.<br>
+				${sessionScope.userid }´Ô ¾È³çÇÏ¼¼¿ä.<br>
 				<a href="#">Á¤º¸¼öÁ¤</a>
+				<a href="con?action=logout">·Î±×¾Æ¿ô</a>
 			</center>
 		</c:otherwise>	
 	

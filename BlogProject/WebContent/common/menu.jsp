@@ -18,7 +18,7 @@ menu<br>
 수정<br>
 
 	<c:choose>
-		<c:when test="${userid==null }">
+		<c:when test="${sessionScope.userid==null }">
 			로그인 하세영.
 		</c:when>
 		<c:otherwise>

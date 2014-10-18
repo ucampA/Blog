@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 public class blogController extends HttpServlet {
     public blogController() {
@@ -27,6 +29,8 @@ public class blogController extends HttpServlet {
 		
 		if(action.equals("login")){
 			login(request, response);
+		}else if(action.equals("logout")){
+			logout(request, response);
 		}
 		
 	}
@@ -34,18 +38,31 @@ public class blogController extends HttpServlet {
 
 	public void login(HttpServletRequest request, HttpServletResponse response) {
 		try {
+			HttpSession session = request.getSession();
 			String userid = request.getParameter("userid");
 			String userpw = request.getParameter("userpw");
 			//test¿ë ÄÚµå
-			System.out.println("login --------------- in");
-			request.setAttribute("userid", userid);
+			session.setAttribute("userid", userid);
 			
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		};
+		}
 	}
+	private void logout(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.invalidate();
+		try {
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 }
