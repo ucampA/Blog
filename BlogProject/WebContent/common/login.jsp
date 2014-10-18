@@ -31,8 +31,11 @@
 			</form>
 		</c:when>
 		<c:otherwise>
-			${userid }님 안녕하세요.<br>
-			
+			<center>
+				<br>
+				${userid }님 안녕하세요.<br>
+				<a href="#">정보수정</a>
+			</center>
 		</c:otherwise>	
 	
 	</c:choose>

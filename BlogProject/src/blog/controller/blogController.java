@@ -31,8 +31,6 @@ public class blogController extends HttpServlet {
 		
 	}
 	
-	
-	
 
 	public void login(HttpServletRequest request, HttpServletResponse response) {
 		try {
