@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>login.html</title>
+</head>
+<body>
+client의 고유한 상태 유지를 위한 개발 기법<br>
+
+<br><hr size="2" color="red"><br>
+
+1. forward page이동 방식을 이용 : request에 데이터 저장<br>
+<br><hr><br>
+<form action="check" method="post">
+	id <input type="text" name="id"><br>
+	pw <input type="password" name="pw"><br>
+	<input type="submit" value="로그인">
+</form>
+
+
+<br><hr size="2" color="blue"><br>
+2. Servlet의 HttpSession API를 활용한 상태유지<br>
+<br><hr><br>
+<form action="checkSession" method="post">
+	id <input type="text" name="id"><br>
+	pw <input type="password" name="pw"><br>
+	<input type="submit" value="로그인">
+</form>
+
+
+<br><hr size="2" color="blue"><br>
+3. Servlet의 Cookie API를 활용한 상태유지<br>
+<br><hr><br>
+<form action="checkCookie" method="post">
+	id <input type="text" name="id"><br>
+	pw <input type="password" name="pw"><br>
+	<input type="submit" value="로그인">
+</form>
+
+
+</body>
+</html>
+
+
+
+

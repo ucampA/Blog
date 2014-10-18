@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>step04_SessionTracking</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>idCheck</servlet-name>
+    <servlet-class>step01.controller.LoginCheckController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>idCheck</servlet-name>
+    <url-pattern>/check</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SuccessView</servlet-name>
+    <servlet-class>step01.view.SuccessView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SuccessView</servlet-name>
+    <url-pattern>/success</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>FailView</servlet-name>
+    <servlet-class>step01.view.FailView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FailView</servlet-name>
+    <url-pattern>/fail</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  <servlet>
+    <servlet-name>idCheckSession</servlet-name>
+    <servlet-class>step02.session.controller.LoginCheckController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>idCheckSession</servlet-name>
+    <url-pattern>/checkSession</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SuccessViewSession</servlet-name>
+    <servlet-class>step02.session.view.SuccessView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SuccessViewSession</servlet-name>
+    <url-pattern>/successSession</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>FailViewSession</servlet-name>
+    <servlet-class>step02.session.view.FailView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FailViewSession</servlet-name>
+    <url-pattern>/failSession</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  <servlet>
+    <servlet-name>idCheckCookie</servlet-name>
+    <servlet-class>step03.cookie.controller.LoginCheckController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>idCheckCookie</servlet-name>
+    <url-pattern>/checkCookie</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SuccessViewCookie</servlet-name>
+    <servlet-class>step03.cookie.view.SuccessView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SuccessViewCookie</servlet-name>
+    <url-pattern>/successCookie</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>FailViewCookie</servlet-name>
+    <servlet-class>step03.cookie.view.FailView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FailViewCookie</servlet-name>
+    <url-pattern>/failCookie</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+</web-app>

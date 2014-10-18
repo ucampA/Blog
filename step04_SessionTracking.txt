@@ -1,0 +1,88 @@
+step04_SessionTracking
+
+1. http 기본 특징인 비연결지향형에 따른 상태유지 개발 기법
+2. 개발방법
+	1. 세션
+		- client 상태유지를 위한 데이터는 서버 메모리에 저장
+	2. 쿠키
+		- client 상태유지를 위한 데이터는 client 시스템(파일 or 브라우저 메모리)
+		- ms사는 ie이외의 타 브라우저의 쿠키 정보는 절대 파일로 생성 금지 
+			: 타사브라우저 자체 메모리 활용 
+			
+3. 개발 코드
+	[1] 세션 기법
+		1. javax.servlet.http.HttpSession API를 활용한 상태유지
+		2. 상태 유지를 위해 필요한 데이터 : 서버 메모리 어딘가에 저장
+		3. 데이터 타입제한 없음
+		4. 개발
+			a. client로 인해 생성된 request객체로 부터 세션 생성
+				- HttpSession session = request.getSession()
+			b. 세션에 데이터 저장
+				- session.setAttribute(key, value)
+			c. page 이동
+			d. 이동된 page에서 세션 재획득
+				- HttpSession session = request.getSession()
+				  
+			e. 세션으로부터 데이터 반환
+				-  타입 변수명 = (타입)session.getAttribte(key);
+			...
+			f. 로그아웃시 처럼 세션 무효화
+				- session.invaidate()
+		5. getSession() & getSession(true)
+			- 세션이 없으면 생성, 있으면 유지
+			getSession(false)
+			- 세션이 있는 경우만 유지, 없으면 생성 무
+			
+			
+	
+	[2] 쿠키 기법
+		1. javax.servlet.http.Cookie API를 활용한 상태 유지
+		2. 상태 유지를 위해 필요한 데이터 : client pc에 저장
+		3. 데이터 타입 문자열만 가능
+		4. 개발
+			a. 쿠키생성
+				Cookie id = new Cookie("id", "id데이터");
+				...
+			b. 쿠키 생존 시간 설정
+				id.setMaxAge(초단위)
+				
+			c. client 시스템에 전송
+				response.addCookie(id);
+		
+			d. page이동
+			e. 쿠키 획득
+				Cookie [] cookies = request.getCookies();
+				
+			f. key로 쿠키값 획득 및 활용
+				getName() : key 반환
+				getValue() : value 반환 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		step02.session.controller
+		step02.session.view
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
