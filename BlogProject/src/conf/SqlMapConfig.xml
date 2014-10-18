@@ -4,6 +4,7 @@
 	"dtd/mybatis-3-config.dtd">
 
 <configuration>
+	<properties resource="conf/dbinfo.properties"/>
 
 	<typeAliases>
 		<typeAlias type="blog.model.dto.BlogBean" alias="blog"/>
@@ -15,10 +16,10 @@
 		<environment id="env">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
-				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
-				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
-				<property name="username" value="scott" />
-				<property name="password" value="tiger" />
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.id}" />
+				<property name="password" value="${jdbc.pw}" />
 			</dataSource>
 		</environment>
 
