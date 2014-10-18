@@ -17,7 +17,5 @@
 		blog title: <input type="text" name="title" value="${requestScope.bean.getBlogname() }"><br>
 		<button type="submit">Save</button>
 	</form>
- 
- 
 </body>
 </html>

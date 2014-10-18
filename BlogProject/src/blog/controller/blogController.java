@@ -47,11 +47,6 @@ public class blogController extends HttpServlet {
 			updateSave(request, response);
 		}
 	}
-	
-
-	
-
-	
 
 	public void login(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -80,6 +75,7 @@ public class blogController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
 	private void logout(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		session.invalidate();
@@ -112,6 +108,7 @@ public class blogController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
 	private void update(HttpServletRequest request, HttpServletResponse response) {
 		MemberBean bean = new MemberBean();
 		HttpSession session = request.getSession();
@@ -119,9 +116,7 @@ public class blogController extends HttpServlet {
 		
 		try {
 			request.setAttribute("bean",member.selectMemberByID(userid));
-			request.setAttribute("page", "member/update.jsp");
-			System.out.println("update 주소 바꿀시점");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp?page=member/update.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (RecordNotFoundException e) {
@@ -132,6 +127,7 @@ public class blogController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
 	private void updateSave(HttpServletRequest request,
 			HttpServletResponse response) {
 		MemberBean bean = new MemberBean();
