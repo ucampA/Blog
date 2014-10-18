@@ -5,15 +5,16 @@
 
 <mapper namespace="Member">
 
+	
 	<insert id="insertMember" parameterType="mem">
 		insert into member values( #{userid} , #{userpw}, #{name}, #{phone},  #{blogname}, #{type} )
 	</insert>
 	
-	<select id="getMemberByID" parameterType="String" resultType="mem">
+	<select id="selectMemberByID" parameterType="String" resultType="mem">
 		select * from member where userid	= #{userid} 
 	</select>
 	
-	<select id="getMemberList" resultType="mem">
+	<select id="selectMemberList" resultType="mem">
 		select * from member
 	</select>
 	

@@ -71,4 +71,8 @@ public class BlogDAO {
 			session.close();
 		}
 	}
+	
+	public static void main(String[] args) {
+		
+	}
 }
