@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	회원가입<br>
+	id: <input type="text" name="id"><br>
+	pw: <input type="text" name="pw"><br>
+	name: <input type="text" name="name"><br>
+	phone: <input type="text" name="phone"><br>
+	blog title: <input type="text" name="title"><br>
+
 
 </body>
 </html>
