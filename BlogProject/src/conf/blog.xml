@@ -6,6 +6,7 @@
 
 	<select id="selectAllPosts" resultType="blog">
 		SELECT * FROM blog
+		WHERE userid = #{userid}
 		ORDER BY no
 	</select>
 	
