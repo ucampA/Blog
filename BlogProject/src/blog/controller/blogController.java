@@ -74,7 +74,7 @@ public class blogController extends HttpServlet {
 		bean.setUserpw(request.getParameter("pw"));
 		bean.setPhone(request.getParameter("phone"));
 		bean.setName(request.getParameter("name"));
-		bean.setType('u');
+		bean.setType('U');
 		bean.setBlogname(request.getParameter("title"));
 		try {
 			MemberDAO.insertMember(bean);
