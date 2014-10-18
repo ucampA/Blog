@@ -20,7 +20,7 @@ public class MemberDAO {
 			session.close();
 		}
 	}
-
+	
 	public static MemberBean selectMemberByID(String id) throws SQLException {
 		SqlSession session = DBUtil.getSqlSession();
 		try {

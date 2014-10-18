@@ -47,12 +47,24 @@ public class blogController extends HttpServlet {
 			String userid = request.getParameter("userid");
 			String userpw = request.getParameter("userpw");
 			//test용 코드
-			session.setAttribute("userid", userid);
 			
+			MemberBean bean = MemberDAO.selectMemberByID(userid);
+			if(bean!=null){
+				if(bean.getUserpw().equals(userpw)){
+					session.setAttribute("userid", userid);
+				}else{
+					System.out.println("비번 틀림");
+				}
+			}else{
+				System.out.println("ID 틀림");
+			}
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -87,8 +99,5 @@ public class blogController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
 
 }
