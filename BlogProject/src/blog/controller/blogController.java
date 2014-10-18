@@ -1,6 +1,7 @@
 package blog.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import blog.model.dao.MemberDAO;
+import blog.model.dto.MemberBean;
 
 
 public class blogController extends HttpServlet {
@@ -31,8 +35,9 @@ public class blogController extends HttpServlet {
 			login(request, response);
 		}else if(action.equals("logout")){
 			logout(request, response);
+		}else if(action.equals("join")){
+			join(request, response);
 		}
-		
 	}
 	
 
@@ -52,7 +57,6 @@ public class blogController extends HttpServlet {
 		}
 	}
 	private void logout(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		session.invalidate();
 		try {
@@ -63,6 +67,28 @@ public class blogController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	private void join(HttpServletRequest request, HttpServletResponse response) {
+		MemberBean bean = new MemberBean();
+		bean.setUserid(request.getParameter("id"));
+		bean.setUserpw(request.getParameter("pw"));
+		bean.setPhone(request.getParameter("phone"));
+		bean.setName(request.getParameter("name"));
+		bean.setType('u');
+		bean.setBlogname(request.getParameter("title"));
+		try {
+			MemberDAO.insertMember(bean);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 
 }
