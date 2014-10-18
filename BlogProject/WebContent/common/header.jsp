@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- header.jsp
+<a href="index.jsp?page=blog/blogList.jsp">go to main</a><br>
 </body>
 </html>
