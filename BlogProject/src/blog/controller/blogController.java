@@ -179,7 +179,7 @@ public class blogController extends HttpServlet {
 		String userid = (String) session.getAttribute("userid");
 		try {
 			blog.insertPost(new BlogBean(title, content, userid));
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("con?action=getAllPosts").forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
