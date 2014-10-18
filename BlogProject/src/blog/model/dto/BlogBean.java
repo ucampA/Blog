@@ -3,6 +3,7 @@ package blog.model.dto;
 public class BlogBean {
 	private int no;
 	private String title;
+	private String content;
 	private String writeday;
 	private int readcount;
 	private String userid;
@@ -10,11 +11,10 @@ public class BlogBean {
 	public BlogBean() {
 		super();
 	}
-	public BlogBean(String title, String writeday, int readcount, String userid) {
+	public BlogBean(String title, String content, String userid) {
 		super();
 		this.title = title;
-		this.writeday = writeday;
-		this.readcount = readcount;
+		this.content = content;
 		this.userid = userid;
 	}
 	public int getNo() {
@@ -28,6 +28,12 @@ public class BlogBean {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getWriteday() {
 		return writeday;
@@ -47,12 +53,15 @@ public class BlogBean {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("BlogBean [no=");
 		builder.append(no);
 		builder.append(", title=");
 		builder.append(title);
+		builder.append(", content=");
+		builder.append(content);
 		builder.append(", writeday=");
 		builder.append(writeday);
 		builder.append(", readcount=");
@@ -62,4 +71,6 @@ public class BlogBean {
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	
 }

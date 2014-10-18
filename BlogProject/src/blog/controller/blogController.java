@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import blog.exception.RecordNotFoundException;
 import blog.model.dao.BlogDAO;
+import blog.model.dto.BlogBean;
 import blog.model.dto.MemberBean;
 import blog.service.BlogManagerment;
 import blog.service.MemberManagerment;
@@ -48,6 +49,8 @@ public class blogController extends HttpServlet {
 			updateSave(request, response);
 		}else if(action.equals("getAllPosts")){
 			getAllPosts(request, response);
+		}else if(action.equals("write")){
+			wrtieSave(request, response);
 		}
 	}
 
@@ -163,6 +166,24 @@ public class blogController extends HttpServlet {
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void wrtieSave(HttpServletRequest request,
+			HttpServletResponse response){
+		HttpSession session = request.getSession();
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String userid = (String) session.getAttribute("userid");
+		try {
+			blog.insertPost(new BlogBean(title, content, userid));
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

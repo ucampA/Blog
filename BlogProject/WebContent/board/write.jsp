@@ -9,7 +9,7 @@
 <body>
 게시글 쓰기
 	<center>
-	<form action="" method="post" name="writeFrm">
+	<form action="con?action=wrtie" method="post" name="writeFrm">
 		<table>
 			<tr><td>제목</td></tr>
 			<tr><td><input type="text" name="title" size="55"> </td></tr>
