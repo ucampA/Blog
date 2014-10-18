@@ -6,8 +6,7 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias type="ucamp.domain.BankBranch" alias="bankbranch"/>
-		<typeAlias type="ucamp.domain.Employee" alias="employee"/>
+		<typeAlias type="blog.model.dto.BlogBean" alias="blog"/>
 	</typeAliases>
 
 	<environments default="env">			
@@ -25,8 +24,7 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="conf/bankbranch.xml" />	
-		<mapper resource="conf/employee.xml" />	
+		<mapper resource="conf/blog.xml" />	
 	</mappers>
 
 </configuration>
