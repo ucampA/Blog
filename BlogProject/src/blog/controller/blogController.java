@@ -23,22 +23,23 @@ public class blogController extends HttpServlet {
 	
 	protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String page = request.getParameter("action");
+		String action = request.getParameter("action");
 		
-		
-		if(page.equals("login")){
+		if(action.equals("login")){
 			login(request, response);
 		}
+		
 	}
 	
 	
 	
+
 	public void login(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			String userid = request.getParameter("userid");
 			String userpw = request.getParameter("userpw");
-			
 			//test¿ë ÄÚµå
+			System.out.println("login --------------- in");
 			request.setAttribute("userid", userid);
 			
 			request.getRequestDispatcher("index.jsp").forward(request, response);

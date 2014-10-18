@@ -13,7 +13,7 @@
 	name: <input type="text" name="name"><br>
 	phone: <input type="text" name="phone"><br>
 	blog title: <input type="text" name="title"><br>
-
+	<button type="submit">Join</button>
 
 </body>
 </html>

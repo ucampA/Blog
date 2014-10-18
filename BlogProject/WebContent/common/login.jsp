@@ -24,7 +24,7 @@
 					<tr>
 						<td colspan="2">
 							<input type="submit" value="Login" >
-							<input type="button" value="Join">
+							<input type="button" value="Join" onclick="javascript:location='index.jsp?page=member/join.jsp'">
 						</td>
 					</tr>
 				</table>	
