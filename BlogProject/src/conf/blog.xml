@@ -17,7 +17,7 @@
 	
 	<insert id="insertPost" parameterType="blog">
 		INSERT INTO blog
-		VALUES (seq_blog_no.nextval, #{title}, #{content}, sysdate, 0, userid)
+		VALUES (seq_blog_no.nextval, #{title}, #{content}, sysdate, 0, #{userid})
 	</insert>
 	
 	<update id="updateReadCount">
