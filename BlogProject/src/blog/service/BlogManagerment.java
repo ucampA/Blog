@@ -12,7 +12,7 @@ public class BlogManagerment implements BlogManagermentIF{
 	public static BlogManagerment getInstance(){
 		return instance;
 	}
-
+	//ghgjhj
 	public List<BlogBean> selectAllBranches() throws SQLException ,RecordNotFoundException{
 		List<BlogBean> list = null;
 		try {
