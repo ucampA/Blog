@@ -8,5 +8,18 @@
 </head>
 <body>
 
+blog list<br>
+
+owner /title1 / date<br>
+owner /title1 / date<br>
+owner /title1 / date<br>
+owner /title1 / date<br>
+owner /title1 / date<br>
+owner /title1 / date<br>
+owner /title1 / date<br>
+owner /title1 / date<br>
+owner /title1 / date<br>
+owner /title1 / date<br>
+
 </body>
 </html>

@@ -9,10 +9,10 @@
 </head>
 <body>
 	<div id="container">
-		<div id="header">header</div>
-		<div id="content">content</div>
+		<div id="header"><jsp:include page="common/header.jsp"/></div>
+		<div id="content"><jsp:include page="blog/blogList.jsp"/></div>
 		<div id="login"><jsp:include page="common/login.jsp"/></div>
-		<div id="menu">menu</div>
+		<div id="menu"><jsp:include page="common/menu.jsp"/></div>
 		<div id="footer">footer</div>
 	</div>
 </body>

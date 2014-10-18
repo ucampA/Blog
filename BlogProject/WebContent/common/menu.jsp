@@ -8,5 +8,14 @@
 </head>
 <body>
 
+
+menu<br>
+
+로그인시에<br>
+글쓰기<br>
+삭제<br>
+수정<br>
+
+
 </body>
 </html>
