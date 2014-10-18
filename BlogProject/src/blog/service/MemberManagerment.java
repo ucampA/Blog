@@ -63,7 +63,7 @@ public class MemberManagerment implements MemberManagermentIF {
 		}
 	}
 	
-	public void deleteMemberByID(String id) throws SQLException {
+	public void deleteMemberByID(String id) throws SQLException{
 		int result =0;
 		try {
 			result = MemberDAO.deleteMemberByID(id);
