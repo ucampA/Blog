@@ -1,6 +1,8 @@
 package blog.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +23,30 @@ public class blogController extends HttpServlet {
 	
 	protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String page = request.getParameter("action");
 		
+		
+		if(page.equals("login")){
+			login(request, response);
+		}
+	}
+	
+	
+	
+	public void login(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			String userid = request.getParameter("userid");
+			String userpw = request.getParameter("userpw");
+			
+			//test¿ë ÄÚµå
+			request.setAttribute("userid", userid);
+			
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		};
 	}
 
 }

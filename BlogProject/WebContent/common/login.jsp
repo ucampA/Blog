@@ -11,22 +11,24 @@
 
 	<c:choose>
 		<c:when test="${userid==null }">
-			<table align="center">
-				<tr>
-					<td>ID</td>
-					<td><input type="text" name="userid" size="10"></td>
-				</tr>
-				<tr>
-					<td>PW</td>
-					<td><input type="text" name="userpw" size="10"></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="button" value="Login">
-						<input type="button" value="Join">
-					</td>
-				</tr>
-			</table>	
+			<form action="con?action=login" method="post" name="loginFrm">
+				<table align="center">
+					<tr>
+						<td>ID</td>
+						<td><input type="text" name="userid" size="10"></td>
+					</tr>
+					<tr>
+						<td>PW</td>
+						<td><input type="text" name="userpw" size="10"></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="submit" value="Login" >
+							<input type="button" value="Join">
+						</td>
+					</tr>
+				</table>	
+			</form>
 		</c:when>
 		<c:otherwise>
 			${userid }¥‘ æ»≥Á«œººø‰.<br>
