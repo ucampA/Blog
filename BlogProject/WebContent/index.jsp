@@ -4,14 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<link rel="stylesheet" type="text/css" href="css/layout.css" />
 <title>Insert title here</title>
 </head>
 <body>
-
-	<div class="header"></div>
-	<div class="content">sdaffdasfdasfdasfdasfadsdasfadsffdasfdasasdf</div>
-	<div class="login"></div>
-	<div class="menu"></div>
-
+	<div id="container">
+		<div id="header">header</div>
+		<div id="content">content</div>
+		<div id="login">login</div>
+		<div id="menu">menu</div>
+		<div id="footer">footer</div>
+	</div>
 </body>
 </html>
