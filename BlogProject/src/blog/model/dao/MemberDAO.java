@@ -12,7 +12,6 @@ import blog.model.dto.MemberBean;
 import blog.util.DBUtil;
 
 public class MemberDAO {
-
 	public static int insertMember(MemberBean member) throws SQLException {
 		SqlSession session = DBUtil.getSqlSession(true);
 		try {
