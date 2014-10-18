@@ -7,13 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	회원가입<br>
-	id: <input type="text" name="id"><br>
-	pw: <input type="text" name="pw"><br>
-	name: <input type="text" name="name"><br>
-	phone: <input type="text" name="phone"><br>
-	blog title: <input type="text" name="title"><br>
-	<button type="submit">Join</button>
 
+	<form action="con?action=join" method="post" name="joinFrm">
+		<h1>회원가입</h1><br><hr><br>
+		id: <input type="text" name="id"><br>
+		pw: <input type="text" name="pw"><br>
+		name: <input type="text" name="name"><br>
+		phone: <input type="text" name="phone"><br>
+		blog title: <input type="text" name="title"><br>
+		<button type="submit">Join</button>
+	</form>
 </body>
 </html>

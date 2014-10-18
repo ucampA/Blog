@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-게시글 보기
-
-		<a href="index.jsp?action=delete.jsp">삭제</a><br>
-		<a href="index.jsp?action=modify.jsp">수정</a><br>
+	게시글 리스트<br>
+	
+	
+	
+	
 </body>
 </html>
