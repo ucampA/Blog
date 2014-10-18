@@ -9,6 +9,16 @@ import blog.model.dto.BlogBean;
 import blog.util.DBUtil;
 
 public class BlogDAO {
+	
+	public static List<BlogBean> selectAll() throws SQLException {
+		SqlSession session = DBUtil.getSqlSession();
+		try {
+			return session.selectList("Blog.selectAllPosts");
+		} finally {
+			session.close();
+		}
+	}
+	
 	public static List<BlogBean> selectAllPosts(String userid) throws SQLException {
 		SqlSession session = DBUtil.getSqlSession();
 		try {

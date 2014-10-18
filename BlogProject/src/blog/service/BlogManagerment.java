@@ -12,6 +12,19 @@ public class BlogManagerment implements BlogManagermentIF{
 	public static BlogManagerment getInstance(){
 		return instance;
 	}
+	
+	public List<BlogBean> selectAll(String userid) throws SQLException ,RecordNotFoundException{
+		List<BlogBean> list = null;
+		try {
+			list = BlogDAO.selectAll();
+			if(list == null){
+				throw new RecordNotFoundException();
+			}
+		} catch (SQLException e) {
+			throw e;
+		}
+		return list;
+	}
 
 	public List<BlogBean> selectAllPosts(String userid) throws SQLException ,RecordNotFoundException{
 		List<BlogBean> list = null;
