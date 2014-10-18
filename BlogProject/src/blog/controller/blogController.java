@@ -50,7 +50,7 @@ public class blogController extends HttpServlet {
 		}else if(action.equals("getAllPosts")){
 			getAllPosts(request, response);
 		}else if(action.equals("write")){
-			wrtieSave(request, response);
+			writeSave(request, response);
 		}
 	}
 
@@ -170,7 +170,7 @@ public class blogController extends HttpServlet {
 		}
 	}
 	
-	private void wrtieSave(HttpServletRequest request,
+	private void writeSave(HttpServletRequest request,
 			HttpServletResponse response){
 		HttpSession session = request.getSession();
 		String title = request.getParameter("title");
