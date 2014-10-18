@@ -7,18 +7,15 @@ public class BlogBean {
 	private int readcount;
 	private String userid;
 	
-	public BlogBean() {
-		super();
-	}
-	public BlogBean(int no, String title, String writeday, int readcount,
+	public BlogBean() { }
+	public BlogBean(String title, String writeday, int readcount,
 			String userid) {
-		super();
-		this.no = no;
 		this.title = title;
 		this.writeday = writeday;
 		this.readcount = readcount;
 		this.userid = userid;
 	}
+	
 	public int getNo() {
 		return no;
 	}
@@ -49,6 +46,7 @@ public class BlogBean {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("BlogBean [no=");

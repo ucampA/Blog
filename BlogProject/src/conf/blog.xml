@@ -9,7 +9,7 @@
 		ORDER BY no
 	</select>
 	
-	<select id="selectPostByNo" parameterType="int" resultMap="BankBranchResult">
+	<select id="selectPostByNo" parameterType="int" resultType="blog">
 		SELECT * FROM blog 
 		WHERE no = #{no}
 	</select>
