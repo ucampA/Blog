@@ -1,4 +1,4 @@
-package exception;
+package blog.exception;
 
 public class RecordNotFoundException extends Exception {
 	public RecordNotFoundException() {

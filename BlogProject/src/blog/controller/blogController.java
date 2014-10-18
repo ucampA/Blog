@@ -1,4 +1,4 @@
-package controller;
+package blog.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

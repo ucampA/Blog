@@ -1,4 +1,4 @@
-package model.dto;
+package blog.model.dto;
 /*
  * no number(5) primary key,
 	title varchar(50) not null,

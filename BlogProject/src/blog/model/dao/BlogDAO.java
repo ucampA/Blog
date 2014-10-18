@@ -1,4 +1,4 @@
-package model.dao;
+package blog.model.dao;
 
 public class BlogDAO {
 

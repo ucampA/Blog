@@ -1,4 +1,4 @@
-package exception;
+package blog.exception;
 
 public class DuplicateException extends Exception {
 	public DuplicateException() {
