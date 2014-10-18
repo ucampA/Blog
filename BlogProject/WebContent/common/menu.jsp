@@ -17,7 +17,7 @@ menu<br>
 			로그인 하세영.
 		</c:when>
 		<c:when test="${sessionScope.userid=='admin' }">
-			<a href="index.jsp?page=admin/memberList.jsp">맴버리스트</a><br>
+			<a href="con?action=memberList">맴버리스트</a><br>
 		</c:when>
 		<c:otherwise>
 			<a href="index.jsp?page=board/write.jsp">글쓰기</a><br>

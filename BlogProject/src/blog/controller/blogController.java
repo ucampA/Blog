@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import blog.exception.RecordNotFoundException;
-import blog.model.dao.BlogDAO;
+import blog.model.dao.MemberDAO;
 import blog.model.dto.BlogBean;
 import blog.model.dto.MemberBean;
 import blog.service.BlogManagerment;
@@ -51,6 +51,8 @@ public class blogController extends HttpServlet {
 			getAllPosts(request, response);
 		}else if(action.equals("write")){
 			writeSave(request, response);
+		}else if(action.equals("memberList")){
+			memberList(request, response);
 		}
 	}
 
@@ -186,6 +188,17 @@ public class blogController extends HttpServlet {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	private void memberList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			request.setAttribute("members", MemberDAO.selectMemberList());
+			System.out.println(MemberDAO.selectMemberList() + "11");
+			request.getRequestDispatcher("index.jsp?page=admin/memberList.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("발생위치 bloController.memberList");
 		}
 	}
 }
