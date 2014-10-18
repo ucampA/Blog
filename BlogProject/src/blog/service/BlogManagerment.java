@@ -13,10 +13,10 @@ public class BlogManagerment implements BlogManagermentIF{
 		return instance;
 	}
 
-	public List<BlogBean> selectAllBranches() throws SQLException ,RecordNotFoundException{
+	public List<BlogBean> selectAllPosts() throws SQLException ,RecordNotFoundException{
 		List<BlogBean> list = null;
 		try {
-			list = BlogDAO.selectAllBranches();
+			list = BlogDAO.selectAllPosts();
 			if(list == null){
 				throw new RecordNotFoundException();
 			}
