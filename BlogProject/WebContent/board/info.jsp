@@ -8,5 +8,8 @@
 </head>
 <body>
 게시글 보기
+
+		<a href="index.jsp?action=delete.jsp">삭제</a><br>
+		<a href="index.jsp?action=modify.jsp">수정</a><br>
 </body>
 </html>
