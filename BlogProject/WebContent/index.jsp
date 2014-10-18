@@ -11,7 +11,7 @@
 	<div id="container">
 		<div id="header">header</div>
 		<div id="content">content</div>
-		<div id="login">login</div>
+		<div id="login"><jsp:include page="common/login.jsp"/></div>
 		<div id="menu">menu</div>
 		<div id="footer">footer</div>
 	</div>

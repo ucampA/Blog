@@ -1,13 +1,5 @@
 package blog.model.dto;
-/*
- * no number(5) primary key,
-	title varchar(50) not null,
-	content varchar(500) not null,
-	wirteday date not null,
-	readcount number(4) not null,
-	userid	varchar(20),
-	constraint blog_userid_fk foreign key(userid) references member(userid)
-);*/
+//jaesung -1018-1:20
 public class BlogBean {
 	private int no;
 	private String title;
