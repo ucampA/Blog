@@ -17,9 +17,6 @@
 				<c:when test="${not empty param.page}">
 					<jsp:include page="${param.page}"/>
 				</c:when>
-				<c:when test="${not empty requestScope.page }">
-					<jsp:include page="${requestScope.page}"/>
-				</c:when>
 				<c:otherwise>
 					<jsp:include page="blog/blogList.jsp"/>
 				</c:otherwise>		
