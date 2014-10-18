@@ -12,9 +12,14 @@ import javax.servlet.http.HttpSession;
 
 import blog.model.dao.MemberDAO;
 import blog.model.dto.MemberBean;
+import blog.service.BlogManagerment;
+import blog.service.MemberManagerment;
 
 
 public class blogController extends HttpServlet {
+	private BlogManagerment blog = BlogManagerment.getInstance();
+	private MemberManagerment member = MemberManagerment.getInstance();
+	
     public blogController() {
         super();
     }
@@ -89,7 +94,8 @@ public class blogController extends HttpServlet {
 		bean.setType('U');
 		bean.setBlogname(request.getParameter("title"));
 		try {
-			MemberDAO.insertMember(bean);
+			//MemberDAO.insertMember(bean);
+			member.insertMember(bean);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();

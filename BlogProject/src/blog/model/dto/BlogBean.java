@@ -10,10 +10,8 @@ public class BlogBean {
 	public BlogBean() {
 		super();
 	}
-	public BlogBean(int no, String title, String writeday, int readcount,
-			String userid) {
+	public BlogBean(String title, String writeday, int readcount, String userid) {
 		super();
-		this.no = no;
 		this.title = title;
 		this.writeday = writeday;
 		this.readcount = readcount;
