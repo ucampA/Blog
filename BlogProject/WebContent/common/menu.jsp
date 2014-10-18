@@ -21,7 +21,7 @@ menu<br>
 		</c:when>
 		<c:otherwise>
 			<a href="index.jsp?page=board/write.jsp">글쓰기</a><br>
-			<a href="index.jsp?page=board/write.jsp">게시글 목록</a><br>
+			<a href="con?action=getAllPosts">게시글 목록</a><br>
 		</c:otherwise>	
 	</c:choose>
 
