@@ -34,7 +34,7 @@ public class blogController extends HttpServlet {
 	}
 	
 	protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("euc-kr");
 		String action = request.getParameter("action");
 		
 		if(action.equals("login")){
@@ -156,8 +156,9 @@ public class blogController extends HttpServlet {
 	}
 
 	private void getAllPosts(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
 		try {
-			request.setAttribute("postList", BlogManagerment.getInstance().selectAllPosts());
+			request.setAttribute("postList", BlogManagerment.getInstance().selectAllPosts((String) session.getAttribute("userid")));
 			request.getRequestDispatcher("index.jsp?page=board/list.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
