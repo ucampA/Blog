@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	asdassad
+
+	<div class="header"></div>
+	<div class="content"></div>
+	<div class="login"></div>
+	<div class="menu"></div>
+
 </body>
 </html>
