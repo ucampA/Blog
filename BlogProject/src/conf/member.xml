@@ -3,21 +3,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 				  "dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mem">
+<mapper namespace="Member">
 
-	<insert id="insertMember" parameterType="member">
+	<insert id="insertMember" parameterType="mem">
 		insert into member values( #{userid} , #{userpw}, #{name}, #{phone},  #{blogname}, #{type} )
 	</insert>
 	
-	<select id="getMemberByID" parameterType="String" resultType="member">
+	<select id="getMemberByID" parameterType="String" resultType="mem">
 		select * from member where userid	= #{userid} 
 	</select>
 	
-	<select id="getMemberList" resultType="member">
+	<select id="getMemberList" resultType="mem">
 		select * from member
 	</select>
 	
-	<update id="updateMemberByID" parameterType="member">
+	<update id="updateMemberByID" parameterType="mem">
 		update member
 		set 
 			userpw =  #{userpw},	name = #{name},	phone = #{phone},		blogname = #{blogname}
