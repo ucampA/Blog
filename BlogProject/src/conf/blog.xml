@@ -6,7 +6,7 @@
 	
 	<select id="selectAll" resultType="blog">
 		SELECT * FROM blog
-		ORDER BY no desc
+		ORDER BY no
 	</select>
 	
 	<select id="selectAllPosts" resultType="blog">
@@ -15,7 +15,7 @@
 		ORDER BY no
 	</select>
 	
-	<select id="selectPostByNo" parameterType="int">
+	<select id="selectPostByNo" parameterType="int" resultType="blog">
 		SELECT * FROM blog 
 		WHERE no = #{no}
 	</select>

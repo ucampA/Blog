@@ -53,6 +53,8 @@ public class blogController extends HttpServlet {
 			writeSave(request, response);
 		}else if(action.equals("memberList")){
 			memberList(request, response);
+		}else if(action.equals("detailContent")){
+			detailContent(request, response);
 		}
 	}
 
@@ -66,6 +68,7 @@ public class blogController extends HttpServlet {
 			if(bean!=null){
 				if(bean.getUserpw().equals(userpw)){
 					session.setAttribute("userid", userid);
+					session.setAttribute("blogName", member.selectMemberByID(userid).getBlogname());
 				}else{
 					System.out.println("비번 틀림");
 				}
@@ -147,12 +150,15 @@ public class blogController extends HttpServlet {
 		bean.setBlogname(request.getParameter("title"));
 		try {
 			member.updateMemberByID(bean);
+			request.getSession().setAttribute("blogName", member.selectMemberByID(bean.getUserid()).getBlogname());
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (RecordNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
@@ -194,11 +200,26 @@ public class blogController extends HttpServlet {
 	private void memberList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			request.setAttribute("members", MemberDAO.selectMemberList());
-			System.out.println(MemberDAO.selectMemberList() + "11");
 			request.getRequestDispatcher("index.jsp?page=admin/memberList.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("발생위치 bloController.memberList");
+		}
+	}
+	
+	private void detailContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			BlogBean bean;
+			bean = blog.selectPostByNo(Integer.parseInt(request.getParameter("no")));
+			request.setAttribute("blog", bean);
+			request.getRequestDispatcher("index.jsp?page=blog/detailContent.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("발생위치 bloController.memberList");
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (RecordNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 }

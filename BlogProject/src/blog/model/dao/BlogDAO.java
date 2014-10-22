@@ -13,7 +13,7 @@ public class BlogDAO {
 	public static List<BlogBean> selectAll() throws SQLException {
 		SqlSession session = DBUtil.getSqlSession();
 		try {
-			return session.selectList("Blog.selectAllPosts");
+			return session.selectList("Blog.selectAll");
 		} finally {
 			session.close();
 		}

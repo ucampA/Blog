@@ -112,4 +112,8 @@ public class BlogManagerment implements BlogManagermentIF{
 			throw e;
 		}
 	}
+
+	public Object selectBlogNameByID(String userid) {
+		return null;
+	}
 }
