@@ -2,48 +2,48 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Blog">
+<mapper namespace="Post">
 	
-	<select id="selectAll" resultType="blog">
-		SELECT * FROM blog
+	<select id="selectAll" resultType="post">
+		SELECT * FROM post
 		ORDER BY no
 	</select>
 	
-	<select id="selectAllPosts" resultType="blog">
-		SELECT * FROM blog
+	<select id="selectAllPosts" resultType="post">
+		SELECT * FROM post
 		WHERE userid = #{userid}
 		ORDER BY no
 	</select>
 	
-	<select id="selectPostByNo" parameterType="int" resultType="blog">
-		SELECT * FROM blog 
+	<select id="selectPostByNo" parameterType="int" resultType="post">
+		SELECT * FROM post 
 		WHERE no = #{no}
 	</select>
 	
-	<insert id="insertPost" parameterType="blog">
-		INSERT INTO blog
+	<insert id="insertPost" parameterType="post">
+		INSERT INTO post
 		VALUES (seq_blog_no.nextval, #{title}, #{content}, sysdate, 0, #{userid})
 	</insert>
 	
 	<update id="updateReadCount">
-		UPDATE blog
+		UPDATE post
 		SET readcount = readcount + 1
 		WHERE no = #{no}
 	</update>
 	
-	<update id="updatePost" parameterType="blog">
-		UPDATE blog
+	<update id="updatePost" parameterType="post">
+		UPDATE post
 		SET title = #{title}, content = #{content}
 		WHERE no = #{no}
 	</update>
 	
 	<delete id="deletePostByNo" parameterType="int">
-		DELETE FROM blog 
+		DELETE FROM post 
 		WHERE no = #{no}
 	</delete>
 	
 	<delete id="deleteAllPosts">
-		DELETE FROM blog 
+		DELETE FROM post 
 	</delete>
 
 </mapper>

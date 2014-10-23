@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import blog.exception.RecordNotFoundException;
-import blog.model.dao.BlogDAO;
-import blog.model.dto.BlogBean;
+import blog.model.dao.PostDAO;
+import blog.model.dto.PostBean;
 
 public class BlogManagerment implements BlogManagermentIF{
 	private static BlogManagerment instance = new BlogManagerment();
@@ -13,10 +13,10 @@ public class BlogManagerment implements BlogManagermentIF{
 		return instance;
 	}
 	
-	public List<BlogBean> selectAll(String userid) throws SQLException ,RecordNotFoundException{
-		List<BlogBean> list = null;
+	public List<PostBean> selectAll(String userid) throws SQLException ,RecordNotFoundException{
+		List<PostBean> list = null;
 		try {
-			list = BlogDAO.selectAll();
+			list = PostDAO.selectAll();
 			if(list == null){
 				throw new RecordNotFoundException();
 			}
@@ -26,10 +26,10 @@ public class BlogManagerment implements BlogManagermentIF{
 		return list;
 	}
 
-	public List<BlogBean> selectAllPosts(String userid) throws SQLException ,RecordNotFoundException{
-		List<BlogBean> list = null;
+	public List<PostBean> selectAllPosts(String userid) throws SQLException ,RecordNotFoundException{
+		List<PostBean> list = null;
 		try {
-			list = BlogDAO.selectAllPosts(userid);
+			list = PostDAO.selectAllPosts(userid);
 			if(list == null){
 				throw new RecordNotFoundException();
 			}
@@ -39,10 +39,10 @@ public class BlogManagerment implements BlogManagermentIF{
 		return list;
 	}
 	
-	public BlogBean selectPostByNo(int no) throws SQLException ,RecordNotFoundException{
-		BlogBean blog = null;
+	public PostBean selectPostByNo(int no) throws SQLException ,RecordNotFoundException{
+		PostBean blog = null;
 		try {
-			blog = BlogDAO.selectPostByNo(no);
+			blog = PostDAO.selectPostByNo(no);
 			if(blog == null){
 				throw new RecordNotFoundException();
 			}
@@ -52,10 +52,10 @@ public class BlogManagerment implements BlogManagermentIF{
 		return blog;
 	}
 	
-	public void insertPost(BlogBean post) throws SQLException{
+	public void insertPost(PostBean post) throws SQLException{
 		int result = 0;
 		try {
-			result = BlogDAO.insertPost(post);
+			result = PostDAO.insertPost(post);
 			if(result == 0){
 				throw new SQLException();
 			}
@@ -64,10 +64,10 @@ public class BlogManagerment implements BlogManagermentIF{
 		}
 	}
 	
-	public void updatePost(BlogBean post) throws SQLException{
+	public void updatePost(PostBean post) throws SQLException{
 		int result = 0;
 		try {
-			result = BlogDAO.updatePost(post);
+			result = PostDAO.updatePost(post);
 			if(result == 0){
 				throw new SQLException();
 			}
@@ -79,7 +79,7 @@ public class BlogManagerment implements BlogManagermentIF{
 	public int updateReadCount() throws SQLException ,RecordNotFoundException{
 		int result = 0;
 		try {
-			result = BlogDAO.updateReadCount();
+			result = PostDAO.updateReadCount();
 			if(result == 0){
 				throw new RecordNotFoundException();
 			}
@@ -92,7 +92,7 @@ public class BlogManagerment implements BlogManagermentIF{
 	public void deletePostByNo(int branchNo) throws SQLException ,RecordNotFoundException{
 		int result = 0;
 		try {
-			result = BlogDAO.deletePostByNo(branchNo);
+			result = PostDAO.deletePostByNo(branchNo);
 			if(result == 0){
 				throw new RecordNotFoundException();
 			}
@@ -104,7 +104,7 @@ public class BlogManagerment implements BlogManagermentIF{
 	public void deleteAllPosts() throws SQLException ,RecordNotFoundException{
 		int result = 0;
 		try {
-			result = BlogDAO.deleteAllPosts();
+			result = PostDAO.deleteAllPosts();
 			if(result == 0){
 				throw new RecordNotFoundException();
 			}

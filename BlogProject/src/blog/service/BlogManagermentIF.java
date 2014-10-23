@@ -4,18 +4,18 @@ import java.sql.SQLException;
 import java.util.List;
 
 import blog.exception.RecordNotFoundException;
-import blog.model.dto.BlogBean;
+import blog.model.dto.PostBean;
 
 public interface BlogManagermentIF {
-	public List<BlogBean> selectAll(String userid) throws SQLException ,RecordNotFoundException;
+	public List<PostBean> selectAll(String userid) throws SQLException ,RecordNotFoundException;
 	
-	public List<BlogBean> selectAllPosts(String userid) throws SQLException ,RecordNotFoundException;
+	public List<PostBean> selectAllPosts(String userid) throws SQLException ,RecordNotFoundException;
 	
-	public BlogBean selectPostByNo(int no) throws SQLException ,RecordNotFoundException;
+	public PostBean selectPostByNo(int no) throws SQLException ,RecordNotFoundException;
 	
-	public void insertPost(BlogBean post) throws SQLException;
+	public void insertPost(PostBean post) throws SQLException;
 	
-	public void updatePost(BlogBean post) throws SQLException;
+	public void updatePost(PostBean post) throws SQLException;
 	
 	public int updateReadCount() throws SQLException ,RecordNotFoundException;
 	
