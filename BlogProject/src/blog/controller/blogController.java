@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.exceptions.ExceptionFactory;
+
 import blog.exception.RecordNotFoundException;
 import blog.model.dao.MemberDAO;
 import blog.model.dto.BlogBean;
@@ -36,7 +38,6 @@ public class blogController extends HttpServlet {
 	protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		String action = request.getParameter("action");
-		
 		if(action.equals("login")){
 			login(request, response);
 		}else if(action.equals("logout")){
@@ -115,8 +116,11 @@ public class blogController extends HttpServlet {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (Exception e){
+			System.out.println("ID ม฿บน");
 		}
 	}
 	

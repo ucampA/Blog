@@ -15,7 +15,7 @@ CREATE TABLE blog (
 	no number(5) primary key,
 	title varchar(50) not null,
 	content varchar(500) not null,
-	wirteday date not null,
+	writeday date not null,
 	readcount number(4) not null,
 	userid	varchar(20),
 	constraint blog_userid_fk foreign key(userid) references member(userid)
