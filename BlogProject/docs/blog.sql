@@ -17,7 +17,9 @@ CREATE TABLE member (
 CREATE TABLE blog (
 	userid	varchar(20) primary key,
 	blogname varchar(30) not null,
-	constraint blog_userid_fk foreign key(userid) references member(userid)
+	openState char(1),
+	constraint blog_userid_fk foreign key(userid) references member(userid),
+	constraint blog_openstate_ck check(openState in ('O', 'C'))
 );
 
 CREATE TABLE post (
