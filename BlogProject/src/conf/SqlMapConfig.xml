@@ -7,7 +7,7 @@
 	<properties resource="conf/dbinfo.properties"/>
 
 	<typeAliases>
-		<typeAlias type="blog.model.dto.BlogBean" alias="post"/>
+		<typeAlias type="blog.model.dto.PostBean" alias="post"/>
 		<typeAlias type="blog.model.dto.MemberBean" alias="mem"/>
 	</typeAliases>
 
