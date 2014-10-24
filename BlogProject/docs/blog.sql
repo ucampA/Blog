@@ -1,5 +1,8 @@
+DROP TABLE reple;
 DROP TABLE blog;
+DROP TABLE post CASCADE CONSTRAINT;
 DROP TABLE member CASCADE CONSTRAINT;
+DROP SEQUENCE seq_blog_no;
 
 CREATE TABLE member (
 	userid	varchar(20) primary key,
@@ -24,7 +27,7 @@ CREATE TABLE post (
 	writeday date not null,
 	readcount number(4) not null,
 	userid	varchar(20),
-	constraint blog_userid_fk foreign key(userid) references member(userid)
+	constraint post_userid_fk foreign key(userid) references member(userid)
 );
 
 CREATE TABLE reple (

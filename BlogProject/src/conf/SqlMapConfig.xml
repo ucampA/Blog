@@ -7,7 +7,7 @@
 	<properties resource="conf/dbinfo.properties"/>
 
 	<typeAliases>
-		<typeAlias type="blog.model.dto.BlogBean" alias="blog"/>
+		<typeAlias type="blog.model.dto.BlogBean" alias="post"/>
 		<typeAlias type="blog.model.dto.MemberBean" alias="mem"/>
 	</typeAliases>
 
@@ -26,7 +26,7 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="conf/blog.xml" />	
+		<mapper resource="conf/post.xml" />	
 		<mapper resource="conf/member.xml" />	
 	</mappers>
 
