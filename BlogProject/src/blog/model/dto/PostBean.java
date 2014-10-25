@@ -12,6 +12,12 @@ public class PostBean {
 	public PostBean() {
 		super();
 	}
+	public PostBean(int no, String title, String content, String openState) {
+		this.no = no;
+		this.title = title;
+		this.content = content;
+		this.openState = openState;
+	}
 	public PostBean(String title, String content, String userid, String openState) {
 		this.title = title;
 		this.content = content;

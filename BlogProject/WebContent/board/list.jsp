@@ -19,9 +19,9 @@
 			<c:forEach items="${requestScope.postList}" var="post">
 				<c:if test="${post.openState == 'O'}">
 					<tr>
-						<td>${post.no }</td>
-						<td>${post.title }</td>
-						<td>${post.writeday }</td>
+						<td>${post.no}</td>
+						<td><a href="con?action=detailContent&pno=${post.no}">${post.title}</a></td>
+						<td>${post.writeday}</td>
 					</tr>
 				</c:if>
 			</c:forEach>

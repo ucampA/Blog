@@ -17,7 +17,7 @@ public interface BlogManagermentIF {
 	
 	public void updatePost(PostBean post) throws SQLException;
 	
-	public int updateReadCount() throws SQLException ,RecordNotFoundException;
+	public int updateReadCount(int pno) throws SQLException ,RecordNotFoundException;
 	
 	public void deletePostByNo(int branchNo) throws SQLException ,RecordNotFoundException;
 	

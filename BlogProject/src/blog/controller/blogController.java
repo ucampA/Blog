@@ -43,6 +43,11 @@ public class blogController extends HttpServlet {
 			ms.memberList(request, response);
 		}else if(action.equals("detailContent")){
 			ps.detailContent(request, response);
+		}else if(action.equals("updatePost")){
+			System.out.println("=====");
+			ps.updatePost(request, response);
+		}else if(action.equals("deletePost")){
+			ps.deletePost(request, response);
 		}
 	}
 }

@@ -20,7 +20,7 @@
 	<c:forEach items="${blogs}" var="blog">
 		<tr align="center">
 			<td>${blog.no}</td>
-			<td><a href="con?action=detailContent&no=${blog.no}">${blog.title}</a></td>
+			<td><a href="con?action=detailContent&pno=${blog.no}">${blog.title}</a></td>
 			<td>${blog.userid}</td>
 			<td>${blog.writeday}</td>
 			<td>${blog.readcount}</td>

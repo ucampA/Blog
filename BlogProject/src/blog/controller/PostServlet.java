@@ -53,14 +53,39 @@ public class PostServlet extends HttpServlet {
 	
 	protected void detailContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			PostBean bean;
-			bean = blog.selectPostByNo(Integer.parseInt(request.getParameter("no")));
-			request.setAttribute("blog", bean);
+			request.setAttribute("blog", blog.selectPostByNo(Integer.parseInt(request.getParameter("pno"))));
 			request.getRequestDispatcher("index.jsp?page=blog/detailContent.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("발생위치 bloController.memberList");
+			System.out.println("발생위치 bloController.detailContent");
 		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (RecordNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	protected void updatePost(HttpServletRequest request, HttpServletResponse response){
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String openState = request.getParameter("openState");
+		
+		try {
+			blog.updatePost(new PostBean(pno, title, content, openState));
+			getAllPosts(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	protected void deletePost(HttpServletRequest request, HttpServletResponse response){
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		
+		try {
+			blog.deletePostByNo(pno);
+			getAllPosts(request, response);
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (RecordNotFoundException e) {
 			e.printStackTrace();

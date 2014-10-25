@@ -18,7 +18,7 @@
 				</select>
 			</td></tr>
 			<tr><td>제목</td></tr>
-			<tr><td><input type="text" name="title" size="55"> </td></tr>
+			<tr><td><input type="text" name="title" size="55"></td></tr>
 			<tr><td>내용</td></tr>
 			<tr><td><textarea rows="10" cols="60" name="content"></textarea> </td></tr>
 			<tr><td align="right"><input type="button" onclick="postWrite()" value="등록"></td></tr>

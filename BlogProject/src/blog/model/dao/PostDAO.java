@@ -56,19 +56,19 @@ public class PostDAO {
 		}
 	}
 	
-	public static int updateReadCount() throws SQLException {
+	public static int updateReadCount(int pno) throws SQLException {
 		SqlSession session = DBUtil.getSqlSession(true);
 		try {
-			return session.update("Post.updateReadCount");
+			return session.update("Post.updateReadCount", pno);
 		} finally {
 			session.close();
 		}
 	}
 	
-	public static int deletePostByNo(int branchNo) throws SQLException {
+	public static int deletePostByNo(int pno) throws SQLException {
 		SqlSession session = DBUtil.getSqlSession(true);
 		try {
-			return session.delete("Post.deletePostByNo", branchNo);
+			return session.delete("Post.deletePostByNo", pno);
 		} finally {
 			session.close();
 		}

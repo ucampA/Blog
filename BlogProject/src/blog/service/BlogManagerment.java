@@ -76,10 +76,10 @@ public class BlogManagerment implements BlogManagermentIF{
 		}
 	}
 	
-	public int updateReadCount() throws SQLException ,RecordNotFoundException{
+	public int updateReadCount(int pno) throws SQLException ,RecordNotFoundException{
 		int result = 0;
 		try {
-			result = PostDAO.updateReadCount();
+			result = PostDAO.updateReadCount(pno);
 			if(result == 0){
 				throw new RecordNotFoundException();
 			}
