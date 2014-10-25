@@ -17,7 +17,7 @@ CREATE TABLE member (
 CREATE TABLE blog (
 	userid	varchar(20) primary key,
 	blogname varchar(30) not null,
-	openState char(1),
+	openState varchar(1),
 	constraint blog_userid_fk foreign key(userid) references member(userid),
 	constraint blog_openstate_ck check(openState in ('O', 'C'))
 );
@@ -29,7 +29,9 @@ CREATE TABLE post (
 	writeday date not null,
 	readcount number(4) not null,
 	userid	varchar(20),
-	constraint post_userid_fk foreign key(userid) references member(userid)
+	openState varchar(1),
+	constraint post_userid_fk foreign key(userid) references member(userid),
+	constraint post_openstate_ck check(openState in ('O', 'C'))
 );
 
 CREATE TABLE reple (
@@ -43,3 +45,12 @@ CREATE TABLE reple (
 );
 
 CREATE SEQUENCE seq_blog_no INCREMENT BY 1 START WITH 1;
+
+CREATE OR REPLACE trigger insertBlogInfo 
+after
+	insert on member
+	for each row
+BEGIN
+	insert into blog values(:new.userid, :new.blogname, 'O');	
+END;
+/

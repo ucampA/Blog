@@ -7,16 +7,18 @@ public class PostBean {
 	private String writeday;
 	private int readcount;
 	private String userid;
+	private String openState;
 	
 	public PostBean() {
 		super();
 	}
-	public PostBean(String title, String content, String userid) {
-		super();
+	public PostBean(String title, String content, String userid, String openState) {
 		this.title = title;
 		this.content = content;
 		this.userid = userid;
+		this.openState = openState;
 	}
+	
 	public int getNo() {
 		return no;
 	}
@@ -53,10 +55,17 @@ public class PostBean {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	public String getOpenState() {
+		return openState;
+	}
+	public void setOpenState(String openState) {
+		this.openState = openState;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("BlogBean [no=");
+		builder.append("PostBean [no=");
 		builder.append(no);
 		builder.append(", title=");
 		builder.append(title);
@@ -68,9 +77,9 @@ public class PostBean {
 		builder.append(readcount);
 		builder.append(", userid=");
 		builder.append(userid);
+		builder.append(", openState=");
+		builder.append(openState);
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
 }

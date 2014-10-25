@@ -17,11 +17,13 @@
 		</tr>
 		<c:if test="${not empty requestScope.postList}">
 			<c:forEach items="${requestScope.postList}" var="post">
-				<tr>
-					<td>${post.no }</td>
-					<td>${post.title }</td>
-					<td>${post.writeday }</td>
-				</tr>
+				<c:if test="${post.openState == 'O'}">
+					<tr>
+						<td>${post.no }</td>
+						<td>${post.title }</td>
+						<td>${post.writeday }</td>
+					</tr>
+				</c:if>
 			</c:forEach>
 		</c:if>
 	</table>

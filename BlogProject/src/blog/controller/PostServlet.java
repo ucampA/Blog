@@ -32,14 +32,15 @@ public class PostServlet extends HttpServlet {
 		}
 	}
 	
-	protected void writeSave(HttpServletRequest request,
-			HttpServletResponse response){
+	protected void writeSave(HttpServletRequest request, HttpServletResponse response){
 		HttpSession session = request.getSession();
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String userid = (String) session.getAttribute("userid");
+		String openState = request.getParameter("openState");
+		
 		try {
-			blog.insertPost(new PostBean(title, content, userid));
+			blog.insertPost(new PostBean(title, content, userid, openState));
 			request.getRequestDispatcher("con?action=getAllPosts").forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();

@@ -22,7 +22,7 @@
 	
 	<insert id="insertPost" parameterType="post">
 		INSERT INTO post
-		VALUES (seq_blog_no.nextval, #{title}, #{content}, sysdate, 0, #{userid})
+		VALUES (seq_blog_no.nextval, #{title}, #{content}, sysdate, 0, #{userid}, #{openState})
 	</insert>
 	
 	<update id="updateReadCount">
