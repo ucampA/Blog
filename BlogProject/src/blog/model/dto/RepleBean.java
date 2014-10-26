@@ -4,18 +4,15 @@ public class RepleBean {
 	int rno;
 	String content;
 	String writeday;
-	int readcount;
 	String userid;
 	int pno;
 	
 	public RepleBean() { }
-	public RepleBean(int rno, String content, String writeday, int readcount,
-			String userid, int pno) {
+	public RepleBean(int rno, String content, String writeday, String userid, int pno) {
 		super();
 		this.rno = rno;
 		this.content = content;
 		this.writeday = writeday;
-		this.readcount = readcount;
 		this.userid = userid;
 		this.pno = pno;
 	}
@@ -37,12 +34,6 @@ public class RepleBean {
 	}
 	public void setWriteday(String writeday) {
 		this.writeday = writeday;
-	}
-	public int getReadcount() {
-		return readcount;
-	}
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
 	}
 	public String getUserid() {
 		return userid;
@@ -66,8 +57,6 @@ public class RepleBean {
 		builder.append(content);
 		builder.append(", writeday=");
 		builder.append(writeday);
-		builder.append(", readcount=");
-		builder.append(readcount);
 		builder.append(", userid=");
 		builder.append(userid);
 		builder.append(", pno=");

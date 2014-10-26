@@ -38,12 +38,12 @@ CREATE TABLE reple (
 	rno number(5) primary key,
 	content varchar(500) not null,
 	writeday date not null,
-	readcount number(4) not null,
 	userid	varchar(20),
 	pno number(5),
 	constraint reple_pno_fk foreign key(pno) references post(no)
 );
 
+CREATE SEQUENCE seq_reple_no INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE seq_blog_no INCREMENT BY 1 START WITH 1;
 
 CREATE OR REPLACE trigger insertBlogInfo 

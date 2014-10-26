@@ -67,7 +67,6 @@ public class MemberServlet extends HttpServlet {
 		bean.setType('U');
 		bean.setBlogname(request.getParameter("title"));
 		try {
-			//MemberDAO.insertMember(bean);
 			member.insertMember(bean);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (ServletException e) {

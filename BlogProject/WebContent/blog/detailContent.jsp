@@ -43,7 +43,9 @@
 	
 	
 	<jsp:include page="../reple/repleList.jsp"></jsp:include><br>
-	<jsp:include page="../reple/reple.jsp"></jsp:include>
+	<c:if test="${sessionScope.userid != null }">
+		<jsp:include page="../reple/reple.jsp"></jsp:include>
+	</c:if>
 	
 	</center>
 	<script>

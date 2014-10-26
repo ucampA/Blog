@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class blogController extends HttpServlet {
 	private MemberServlet ms = new MemberServlet();
 	private PostServlet ps = new PostServlet();
+	private RepleServlet rs = new RepleServlet();
 	
     public blogController() { }
 
@@ -44,10 +45,19 @@ public class blogController extends HttpServlet {
 		}else if(action.equals("detailContent")){
 			ps.detailContent(request, response);
 		}else if(action.equals("updatePost")){
-			System.out.println("=====");
 			ps.updatePost(request, response);
 		}else if(action.equals("deletePost")){
 			ps.deletePost(request, response);
 		}
+		
+		
+		if(action.equals("sendReple")){
+			System.out.println("===="+action);
+			rs.send(request,response);
+		}else if(action.equals("repleList")){
+			rs.list(request,response);
+		}
+		
+		
 	}
 }

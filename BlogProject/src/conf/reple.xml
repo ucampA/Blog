@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Reple">
+
+	<insert id="insertReple" parameterType="reple">
+		insert into reple values(seq_reple_no.nextval, #{content},sysdate,#{userid},#{pno})
+	</insert>
+	
+	<select id="repleList" parameterType="integer" resultType="reple">
+		select * from reple where pno=#{pno}
+	</select>
+
+<!-- 
+
+rno number(5) primary key,
+	content varchar(500) not null,
+	writeday date not null,
+	userid	varchar(20),
+	pno number(5), -->
+</mapper>

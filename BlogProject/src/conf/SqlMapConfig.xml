@@ -9,6 +9,7 @@
 	<typeAliases>
 		<typeAlias type="blog.model.dto.PostBean" alias="post"/>
 		<typeAlias type="blog.model.dto.MemberBean" alias="mem"/>
+		<typeAlias type="blog.model.dto.RepleBean" alias="reple"/>
 	</typeAliases>
 
 	<environments default="env">			
@@ -28,6 +29,7 @@
 	<mappers>
 		<mapper resource="conf/post.xml" />	
 		<mapper resource="conf/member.xml" />	
+		<mapper resource="conf/reple.xml" />	
 	</mappers>
 
 </configuration>
