@@ -50,14 +50,14 @@
 	</center>
 	<script>
 		function proceed(value, pno) {
-			if(value="update") {
+			if(value=="update") {
 				if(document.getElementById("openState").value == "전체공개") {
 					document.getElementsByName("openState")[0].value = "O";
 				} else {
 					document.getElementsByName("openState")[0].value = "C";
 				}
 				document.writeForm.action = "con?action=updatePost&pno=" + pno;
-			} else {
+			} else if(value=="delete") {
 				document.writeForm.action = "con?action=deletePost&pno=" + pno;
 			}
 			document.writeForm.submit();

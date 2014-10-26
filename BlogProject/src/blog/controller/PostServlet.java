@@ -81,7 +81,7 @@ public class PostServlet extends HttpServlet {
 	
 	protected void deletePost(HttpServletRequest request, HttpServletResponse response){
 		int pno = Integer.parseInt(request.getParameter("pno"));
-		
+		System.out.println("deletePost");
 		try {
 			blog.deletePostByNo(pno);
 			getAllPosts(request, response);
