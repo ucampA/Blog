@@ -33,7 +33,7 @@
 	
 	<update id="updatePost" parameterType="post">
 		UPDATE post
-		SET title = #{title}, content = #{content}
+		SET title = #{title}, content = #{content},openState= #{openState}
 		WHERE no = #{no}
 	</update>
 	

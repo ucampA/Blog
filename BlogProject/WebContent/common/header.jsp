@@ -9,11 +9,29 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${not empty sessionScope.userid}">
-			<a href="index.jsp?page=blog/blogList.jsp"><font size="80px" color="#F6F6F6">${sessionScope.blogName}</font></a><br>
+	 	<c:when test="${not empty sessionScope.userid}">
+	 		<c:choose>
+	 			<c:when test="${blog.userid == sessionScope.userid }">
+					<a href="index.jsp?page=blog/blogList.jsp"><font size="80px" color="#F6F6F6">${sessionScope.blogName}</font></a><br>
+				</c:when>
+				<c:when test="${not empty blog.userid}">
+					<a href="index.jsp?page=blog/blogList.jsp"><font size="80px" color="#F6F6F6">${blog.userid}</font></a><br>
+				</c:when>
+				<c:otherwise>
+					<a href="index.jsp?page=blog/blogList.jsp"><font size="80px" color="#F6F6F6">${sessionScope.blogName}</font></a><br>
+				</c:otherwise>
+			</c:choose>
 		</c:when>
 		<c:otherwise>
-			<a href="index.jsp?page=blog/blogList.jsp">go to main</a><br>
+			<c:choose>
+				<c:when test="${not empty blog.userid}">
+					<a href="index.jsp?page=blog/blogList.jsp"><font size="80px" color="#F6F6F6">${blog.userid}</font></a><br>
+				</c:when>
+				<c:otherwise>
+					<a href="index.jsp?page=blog/blogList.jsp"><font size="80px" color="#F6F6F6">${sessionScope.blogName}</font></a><br>
+				</c:otherwise>
+			
+			</c:choose>
 		</c:otherwise>
 	</c:choose>
 </body>

@@ -54,3 +54,7 @@ BEGIN
 	insert into blog values(:new.userid, :new.blogname, 'O');	
 END;
 /
+commit;
+
+
+

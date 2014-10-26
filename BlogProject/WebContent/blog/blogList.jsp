@@ -18,13 +18,15 @@
 		<td>글번호</td><td width="150px">제목</td><td>ID</td><td>작성일</td><td>조회수</td>
 	</tr>
 	<c:forEach items="${blogs}" var="blog">
-		<tr align="center">
-			<td>${blog.no}</td>
-			<td><a href="con?action=detailContent&pno=${blog.no}">${blog.title}</a></td>
-			<td>${blog.userid}</td>
-			<td>${blog.writeday}</td>
-			<td>${blog.readcount}</td>
-		</tr>
+		<c:if test="${blog.openState == 'O'}">
+			<tr align="center">
+				<td>${blog.no}</td>
+				<td><a href="con?action=detailContent&pno=${blog.no}">${blog.title}</a></td>
+				<td>${blog.userid}</td>
+				<td>${blog.writeday}</td>
+				<td>${blog.readcount}</td>
+			</tr>
+		</c:if>
 	</c:forEach>
 </table>
 </body>
