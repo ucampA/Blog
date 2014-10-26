@@ -47,6 +47,7 @@ public class blogController extends HttpServlet {
 		}else if(action.equals("updatePost")){
 			ps.updatePost(request, response);
 		}else if(action.equals("deletePost")){
+			System.out.println("deletePost");
 			ps.deletePost(request, response);
 		}
 		
@@ -57,7 +58,6 @@ public class blogController extends HttpServlet {
 		}else if(action.equals("repleList")){
 			rs.list(request,response);
 		}
-		
 		
 	}
 }
