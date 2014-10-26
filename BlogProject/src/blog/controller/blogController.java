@@ -53,9 +53,9 @@ public class blogController extends HttpServlet {
 		
 		
 		if(action.equals("sendReple")){
-			System.out.println("===="+action);
 			rs.send(request,response);
 		}else if(action.equals("repleList")){
+			System.out.println("===="+action);
 			rs.list(request,response);
 		}
 		

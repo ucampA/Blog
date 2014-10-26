@@ -24,23 +24,31 @@ public class RepleServlet extends HttpServlet {
 		bean.setContent(request.getParameter("repleContent"));
 		bean.setPno(Integer.parseInt(request.getParameter("pno")));
 		
-		System.out.println("Reple Send pno:"+request.getParameter("pno")+", id:"+session.getAttribute("userid")+",con" +request.getParameter("repleContent"));
+		System.out.println("Reple Send pno:"+request.getParameter("pno")+", id:"+session.getAttribute("userid")+",con:" +request.getParameter("repleContent"));
 		
 		try {
 			re.sendReple(bean);
-			request.getRequestDispatcher("con?action=detailContent").forward(request, response);
+			//list(request, response);
+			//request.getRequestDispatcher("con?action=detailContent").forward(request, response);
 		} catch (Exception e){
 			System.out.println("리플 오류");
 		}
 	}
 
 	public void list(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("reple list pno:"+request.getParameter("pno"));
 		int pno = Integer.parseInt(request.getParameter("pno"));
 		try {
+			System.out.println("reple List : "+re.repleList(pno));
 			request.setAttribute("repleList", re.repleList(pno));
+			request.getRequestDispatcher("reple/repleList.jsp").forward(request, response);
 		} catch (RecordNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		

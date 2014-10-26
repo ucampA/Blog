@@ -31,6 +31,7 @@ public class ReplyManagement {
 
 	public List repleList(int pno) throws RecordNotFoundException, SQLException {
 		List list = null;
+		System.out.println("reple service");
 		list = RepleDAO.repleList(pno);
 		if(list == null){
 			throw new RecordNotFoundException();

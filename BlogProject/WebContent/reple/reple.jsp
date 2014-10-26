@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,29 +9,50 @@
 <title>Insert title here</title>
 </head>
 <body>
-	reple writer ID: ${sessionScope.userid } 
-	<form action="con?action=sendReple" name="repleFrm" method="post">
-		<input type="text" name="repleContent">
-		<input type="hidden" name="pno" value="${blog.no}">
-	</form>
-	<button onclick="sendReple()">send</button>
+
+	<div id="repleList"></div>
 	
+	<c:if test="${sessionScope.userid != null }">
+		reple writer ID: ${sessionScope.userid } 
+		<form name="repleFrm" method="post">
+			<input type="hidden" name="pno" value="${blog.no}">
+			<input type="text" name="repleContent">
+			<button id="sendReple">send</button>
+			<!-- <button onclick="sendReple()">send</button> -->
+		</form>
+	</c:if>
 	<script type="text/javascript">
-		/* function proceed(value, pno) {
-			if(value="update") {
-				if(document.getElementById("openState").value == "전체공개") {
-					document.getElementsByName("openState")[0].value = "O";
-				} else {
-					document.getElementsByName("openState")[0].value = "C";
-				}
-				document.writeForm.action = "con?action=updatePost&pno=" + pno;
-			} else {
-				document.writeForm.action = "con?action=deletePost&pno=" + pno;
-			}
-			document.writeForm.submit();
-		} */
-		function sendReple(){
+		/* function sendReple(){
 			document.repleFrm.submit();
+		} */
+		
+		
+		$(document).ready(function(){
+			
+			repleList();
+			
+			
+			$("#sendReple").click(function(){
+				$.ajax({			
+		    		url:"con?action=sendReple",
+		    		data: $("form").serialize(),
+		    		success:function(result){
+		    			//alert("send complite");
+		      			//$("#repleList").html(result);
+		      			repleList();
+		    		}
+				});
+			});
+		});
+		function repleList(){
+			$.ajax({			
+	    		url:"con?action=repleList",
+	    		data:"pno=1",
+	    		success:function(result){
+	    			alert("reple List");
+	      			$("#repleList").html(result);
+	    		}
+			});
 		}
 		
 	</script>

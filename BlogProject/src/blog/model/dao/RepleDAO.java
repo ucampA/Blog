@@ -19,6 +19,7 @@ public class RepleDAO {
 	}
 
 	public static List repleList(int pno) {
+		System.out.println("repleList DAO");
 		SqlSession session = DBUtil.getSqlSession(true);
 		try {
 			return session.selectList("Reple.repleList", pno);
