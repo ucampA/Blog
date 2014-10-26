@@ -20,11 +20,11 @@ public class RepleServlet extends HttpServlet {
 	public void send(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		RepleBean bean = new RepleBean();
-		bean.setUserid((String) session.getAttribute("userId"));
+		bean.setUserid((String) session.getAttribute("userid"));
 		bean.setContent(request.getParameter("repleContent"));
 		bean.setPno(Integer.parseInt(request.getParameter("pno")));
 		
-		System.out.println("Reple Send pno:"+request.getParameter("pno")+", id:"+session.getAttribute("userId")+",con" +request.getParameter("repleContent"));
+		System.out.println("Reple Send pno:"+request.getParameter("pno")+", id:"+session.getAttribute("userid")+",con" +request.getParameter("repleContent"));
 		
 		try {
 			re.sendReple(bean);
