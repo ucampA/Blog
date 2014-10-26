@@ -7,9 +7,16 @@
 	</insert>
 	
 	<select id="repleList" parameterType="integer" resultType="reple">
-		select * from reple where pno=#{pno}
+		select * from reple where pno=#{pno} order by writeday
 	</select>
 
+	<delete id="deleteReple" parameterType="integer">
+		delete from reple where rno = #{rno} 
+	</delete>
+	
+	<update id="updateReple" parameterType="reple">
+		update reple set content=#{content} where rno=#{rno}
+	</update>
 <!-- 
 
 rno number(5) primary key,

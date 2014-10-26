@@ -31,11 +31,39 @@ public class ReplyManagement {
 
 	public List repleList(int pno) throws RecordNotFoundException, SQLException {
 		List list = null;
-		System.out.println("reple service");
 		list = RepleDAO.repleList(pno);
 		if(list == null){
 			throw new RecordNotFoundException();
 		}
 		return list;
 	}
+
+
+	public void deleteReple(int rno) throws RecordNotFoundException, SQLException {
+		int result = 0;
+		try {
+			System.out.println("reple service delete");
+			result = RepleDAO.deleteReple(rno);
+			if(result == 0){
+				throw new SQLException();
+			}
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+
+	public void updateReple(RepleBean bean) throws SQLException {
+		int result = 0;
+		try {
+			result = RepleDAO.updateReple(bean);
+			if(result == 0){
+				throw new SQLException();
+			}
+		} catch (SQLException e) {
+			throw e;
+		}
+		
+	}
+
+
 }

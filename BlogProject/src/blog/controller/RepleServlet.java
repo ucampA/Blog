@@ -12,34 +12,31 @@ import javax.servlet.http.HttpSession;
 
 import blog.exception.RecordNotFoundException;
 import blog.model.dto.RepleBean;
+import blog.service.BlogManagerment;
 import blog.service.ReplyManagement;
 
 public class RepleServlet extends HttpServlet {
    private ReplyManagement re = new ReplyManagement().getInstance();
+   private BlogManagerment blog = BlogManagerment.getInstance();
 
-	public void send(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
-		RepleBean bean = new RepleBean();
-		bean.setUserid((String) session.getAttribute("userid"));
-		bean.setContent(request.getParameter("repleContent"));
-		bean.setPno(Integer.parseInt(request.getParameter("pno")));
-		
-		System.out.println("Reple Send pno:"+request.getParameter("pno")+", id:"+session.getAttribute("userid")+",con:" +request.getParameter("repleContent"));
-		
-		try {
-			re.sendReple(bean);
-			//list(request, response);
-			//request.getRequestDispatcher("con?action=detailContent").forward(request, response);
-		} catch (Exception e){
-			System.out.println("리플 오류");
-		}
-	}
+   public void send(HttpServletRequest request, HttpServletResponse response) {
+	   HttpSession session = request.getSession();
+	   RepleBean bean = new RepleBean();
+	   bean.setUserid((String) session.getAttribute("userid"));
+	   bean.setContent(request.getParameter("repleContent"));
+	   bean.setPno(Integer.parseInt(request.getParameter("pno")));
+	   //System.out.println("Reple Send pno:"+request.getParameter("pno")+", id:"+session.getAttribute("userid")+",con:" +request.getParameter("repleContent"));
+	   try {
+		   re.sendReple(bean);
+	   } catch (Exception e){
+		   System.out.println("리플 오류");
+	   }
+   }
 
 	public void list(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("reple list pno:"+request.getParameter("pno"));
 		int pno = Integer.parseInt(request.getParameter("pno"));
+		//System.out.println("rList pno:"+pno);
 		try {
-			System.out.println("reple List : "+re.repleList(pno));
 			request.setAttribute("repleList", re.repleList(pno));
 			request.getRequestDispatcher("reple/repleList.jsp").forward(request, response);
 		} catch (RecordNotFoundException e) {
@@ -50,6 +47,33 @@ public class RepleServlet extends HttpServlet {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		
+	}
+
+	public void delete(HttpServletRequest request, HttpServletResponse response) {
+		int rno = Integer.parseInt(request.getParameter("rno"));
+		//System.out.println("reple delete rno:"+request.getParameter("rno"));
+		try {
+			re.deleteReple(rno);
+		} catch (Exception e){
+			System.out.println("리플 삭제 오류");
+		}
+	}
+
+	public void update(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		RepleBean bean = new RepleBean();
+		bean.setUserid((String) session.getAttribute("userid"));
+		bean.setContent(request.getParameter("repleContent"));
+		bean.setRno(Integer.parseInt(request.getParameter("rno")));
+		System.out.println("Reple update pno:"+request.getParameter("pno")+",rno:"+request.getParameter("rno")+", id:"+session.getAttribute("userid")+",con:" +request.getParameter("repleContent"));
+		try {
+			re.updateReple(bean);
+			request.setAttribute("blog", blog.selectPostByNo(Integer.parseInt(request.getParameter("pno"))));
+			request.getRequestDispatcher("index.jsp?page=blog/detailContent.jsp").forward(request, response);
+		} catch (Exception e){
+			System.out.println("리플 수정 오류");
 		}
 		
 	}
