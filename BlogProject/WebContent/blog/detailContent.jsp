@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-게시글 쓰기
+게시글 수정
 	<center>
 	<form method="post" name="writeForm">
 		<table>
@@ -40,6 +40,11 @@
 		</table>
 		<input type="hidden" name="openState">
 	</form>
+	
+	
+	<jsp:include page="../reple/repleList.jsp"></jsp:include><br>
+	<jsp:include page="../reple/reple.jsp"></jsp:include>
+	
 	</center>
 	<script>
 		function proceed(value, pno) {
