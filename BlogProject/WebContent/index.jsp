@@ -27,7 +27,7 @@
 			
 		<div id="login"><jsp:include page="common/login.jsp"/></div>
 		<div id="menu"><jsp:include page="common/menu.jsp"/></div>
-		<div id="footer">footer</div>
+		<div id="footer"></div>
 	</div>
 </body>
 </html>

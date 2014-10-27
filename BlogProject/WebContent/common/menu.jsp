@@ -8,23 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
-menu<br>
-
-	<c:choose>
-		<c:when test="${sessionScope.userid==null }">
-			로그인 하세영.
-		</c:when>
-		<c:when test="${sessionScope.userid=='admin' }">
-			<a href="con?action=memberList">맴버리스트</a><br>
-		</c:when>
-		<c:otherwise>
-			<a href="index.jsp?page=board/write.jsp">글쓰기</a><br>
-			<a href="con?action=getAllPosts">게시글 목록</a><br>
-		</c:otherwise>	
-	</c:choose>
-
-
+	<center><br>
+		<font style="font-size:15pt;"><b>menu</b></font><br><br>
+		<c:choose>
+			<c:when test="${sessionScope.userid==null }">
+				로그인 하세영.
+			</c:when>
+			<c:when test="${sessionScope.userid=='admin' }">
+				<a href="con?action=memberList">맴버리스트</a><br><br>
+			</c:when>
+			<c:otherwise>
+				<a href="index.jsp?page=board/write.jsp">글쓰기</a><br><br>
+				<a href="con?action=getAllPosts">게시글 목록</a><br><br>
+			</c:otherwise>	
+		</c:choose>
+	</center>
 </body>
 </html>

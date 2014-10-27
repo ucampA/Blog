@@ -19,6 +19,7 @@
 					<span onclick="deleteReple(${reple.rno})">ªË¡¶</span>
 				</span>
 			</c:if>
+			<br><br>
 			<div id="repleContent${reple.rno}">&nbsp;${reple.content }</div>
 		</div>
 	</c:forEach>

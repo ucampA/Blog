@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<center>
 	<c:choose>
 		<c:when test="${sessionScope.userid==null }">
 			<form action="con?action=login" method="post" name="loginFrm">
@@ -33,13 +33,12 @@
 		<c:otherwise>
 			<center>
 				<br>
-				${sessionScope.userid }님 안녕하세요.<br>
-				<a href="con?action=update">정보수정</a>
+				<b>${sessionScope.userid }님 안녕하세요.</b><br><br>
+				<a href="con?action=update">정보수정</a>&nbsp;
 				<a href="con?action=logout">로그아웃</a>
 			</center>
 		</c:otherwise>	
-	
 	</c:choose>
-	
+	</center>
 </body>
 </html>
