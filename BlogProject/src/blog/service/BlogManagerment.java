@@ -13,7 +13,7 @@ public class BlogManagerment implements BlogManagermentIF{
 		return instance;
 	}
 	
-	public List<PostBean> selectAll(String userid) throws SQLException ,RecordNotFoundException{
+	public List<PostBean> selectAll() throws SQLException ,RecordNotFoundException{
 		List<PostBean> list = null;
 		try {
 			list = PostDAO.selectAll();

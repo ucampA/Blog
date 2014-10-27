@@ -32,6 +32,24 @@ public class PostServlet extends HttpServlet {
 		}
 	}
 	
+	protected void getAllPostsForSearch(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		try {
+			response.setContentType("text/html;charset=euc-kr");
+			System.out.println(BlogManagerment.getInstance().selectAll()+"출력하자");
+			request.setAttribute("postList", BlogManagerment.getInstance().selectAll());
+			request.getRequestDispatcher("common/suggest.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (RecordNotFoundException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	protected void writeSave(HttpServletRequest request, HttpServletResponse response){
 		HttpSession session = request.getSession();
 		String title = request.getParameter("title");

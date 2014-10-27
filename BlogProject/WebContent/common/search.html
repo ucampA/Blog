@@ -1,0 +1,110 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=euc-kr" />
+	<title>서제스트</title>
+	<script type="text/javascript" src="scripts/httpRequest.js"></script>
+	
+	<script type="text/javascript">
+	var checkFirst = false;
+	var loopSendKeyword = false;
+	var beforeKeyword = "";
+	function startSuggest() {			
+		if (checkFirst == false) {			
+			setTimeout("sendKeyword();", 500);
+			loopSendKeyword = true;
+		}
+		checkFirst = true;
+	}
+
+	function sendKeyword() {
+		if (loopSendKeyword == false){
+			return;
+		}
+		var keyword = document.search.keyword.value;
+		if(beforeKeyword == keyword){
+			checkFirst = false;
+			return;
+		}
+		beforeKeyword = keyword;
+		
+		
+		if (keyword == '') {
+			hide('suggest');
+		}else{
+			var params = "keyword=" + encodeURIComponent(keyword);
+			sendRequest("con?action=getAllPostsForSearch", params, displayResult, 'POST');	
+		}		
+		setTimeout("sendKeyword();", 500);
+	}
+	function displayResult() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var resultText = httpRequest.responseText;
+				var result = resultText.split('|');
+				var count = parseInt(result[0]);
+				var keywordList = null;
+				var html = '';
+				if (count > 0) {
+					var allData = eval("(" + result[1] + ")");
+					for(var v in allData){
+						html += "<a href=\"javascript:select('"+
+						allData[v]+"',"+ v +")\">"+
+						allData[v]+"</a><br/>";
+					}
+					var listView = document.getElementById('suggestList');
+					listView.innerHTML = html;
+					
+					show('suggest');
+				} else {
+					hide('suggest');
+				}
+			} else {
+				alert("에러 발생: "+httpRequest.status);
+			}
+		}
+	}
+	function select(selectedKeyword, no) {
+		document.getElementById("get").setAttribute("no", no);
+		document.search.keyword.value = selectedKeyword;
+		loopSendKeyword = false;
+		checkFirst = false;
+		hide('suggest');
+	}
+	function show(elementId) {
+		var element = document.getElementById(elementId);
+		if (element) {
+			element.style.display = '';
+		}
+	}
+	function hide(elementId) {
+		var element = document.getElementById(elementId);
+		if (element) {
+			element.style.display = 'none';
+		}
+	}
+	
+	function searchPost(){
+		var no = document.getElementById("get").getAttribute("no");
+		if(no.length == 0){
+			alert("제안된 제목을 클릭해주십시오");
+			return;
+		}
+		document.search.setAttribute("action","con?action=getPostByNo&pno="+no);
+		document.search.submit();
+	}
+	</script>
+</head>
+
+<body>
+<form name="search" action="" method="post">
+	<input type="text" name="keyword" id="keyword" onkeydown="startSuggest()" />
+	<input id="get" type="button" no="" value="검색" onclick="searchPost()"/>
+	
+	<div id="suggest">
+		<div id="suggestList"></div>
+	</div>
+	
+</form>
+
+</body>
+</html>

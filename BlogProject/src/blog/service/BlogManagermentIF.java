@@ -7,7 +7,7 @@ import blog.exception.RecordNotFoundException;
 import blog.model.dto.PostBean;
 
 public interface BlogManagermentIF {
-	public List<PostBean> selectAll(String userid) throws SQLException ,RecordNotFoundException;
+	public List<PostBean> selectAll() throws SQLException ,RecordNotFoundException;
 	
 	public List<PostBean> selectAllPosts(String userid) throws SQLException ,RecordNotFoundException;
 	

@@ -24,7 +24,7 @@ public class blogController extends HttpServlet {
 	}
 	
 	protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 		String action = request.getParameter("action");
 		if(action.equals("login")){
 			ms.login(request, response);
@@ -49,6 +49,10 @@ public class blogController extends HttpServlet {
 		}else if(action.equals("deletePost")){
 			System.out.println("deletePost");
 			ps.deletePost(request, response);
+		}else if(action.equals("getAllPostsForSearch")){
+			ps.getAllPostsForSearch(request, response);
+		}else if(action.equals("getPostByNo")){
+			ps.detailContent(request, response);
 		}
 		
 		

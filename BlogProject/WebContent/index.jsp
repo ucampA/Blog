@@ -11,7 +11,9 @@
 <body>
 	<div id="container">
 		<div id="header"><jsp:include page="common/header.jsp"/>...${param.action}...${requestScope.page }</div>
-		
+		<div id="search">
+			<jsp:include page="common/search.html"/>
+		</div>
 		<div id="content">
 			<c:choose>
 				<c:when test="${not empty param.page}">
