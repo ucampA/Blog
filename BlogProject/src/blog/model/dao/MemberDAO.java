@@ -64,15 +64,13 @@ public class MemberDAO {
 		try {
 			members = MemberDAO.selectMemberList();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Iterator allData = members.iterator();
-		// sdf
 		JSONObject jObj = null;
+		
 		while (allData.hasNext()) {
 			jObj = (JSONObject) allData.next();
-			System.out.println(jObj.get("userid"));
 		}
 	}
 

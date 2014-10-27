@@ -47,7 +47,6 @@ public class blogController extends HttpServlet {
 		}else if(action.equals("updatePost")){
 			ps.updatePost(request, response);
 		}else if(action.equals("deletePost")){
-			System.out.println("deletePost");
 			ps.deletePost(request, response);
 		}else if(action.equals("getAllPostsForSearch")){
 			ps.getAllPostsForSearch(request, response);
@@ -56,7 +55,6 @@ public class blogController extends HttpServlet {
 		}else if(action.equals("deleteMemberByID")){
 			ms.deleteMemberByID(request, response);
 		}
-		
 		
 		if(action.equals("sendReple")){
 			rs.send(request,response);
@@ -67,6 +65,5 @@ public class blogController extends HttpServlet {
 		}else if(action.equals("updateReple")){
 			rs.update(request,response);
 		}
-		
 	}
 }

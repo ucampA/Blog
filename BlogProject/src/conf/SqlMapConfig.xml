@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
-	"dtd/mybatis-3-config.dtd">
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "dtd/mybatis-3-config.dtd">
 
 <configuration>
 	<properties resource="conf/dbinfo.properties"/>
@@ -13,7 +12,6 @@
 	</typeAliases>
 
 	<environments default="env">			
-
 		<environment id="env">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
@@ -23,7 +21,6 @@
 				<property name="password" value="${jdbc.pw}" />
 			</dataSource>
 		</environment>
-
 	</environments>
 	
 	<mappers>

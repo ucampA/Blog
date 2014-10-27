@@ -33,8 +33,6 @@ public class MemberServlet extends HttpServlet {
 					request.getRequestDispatcher("index.jsp?page=msg/failed.jsp").forward(request, response);
 					return;
 				}
-			}else{
-				System.out.println("ID Æ²¸²");
 			}
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (ServletException e) {
@@ -134,29 +132,23 @@ public class MemberServlet extends HttpServlet {
 			request.getRequestDispatcher("index.jsp?page=admin/memberList.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("¹ß»ýÀ§Ä¡ bloController.memberList");
 		}
 	}
 
 	public void deleteMemberByID(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			System.out.println("Å»ÅðÇÏ±â");
 			if(MemberDAO.deleteMemberByID(request.getParameter("id"))!=0){
 				if(request.getSession().getAttribute("userid").equals("admin")){
 					return;
 				}else{
-					System.out.println("¿¤Áî");
 					request.getSession().invalidate();
 					request.setAttribute("msg", "Å»Åð¼º°ø");
 					request.getRequestDispatcher("index.jsp?page=msg/success.jsp").forward(request, response);
 					return;
 				}
 			}
-				System.out.println("ÀÌÇÁ¹®¹Û");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("¹ß»ýÀ§Ä¡ bloController.memberList");
 		}
 	}
-	
 }

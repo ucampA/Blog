@@ -17,11 +17,5 @@
 	<update id="updateReple" parameterType="reple">
 		update reple set content=#{content} where rno=#{rno}
 	</update>
-<!-- 
-
-rno number(5) primary key,
-	content varchar(500) not null,
-	writeday date not null,
-	userid	varchar(20),
-	pno number(5), -->
+	
 </mapper>

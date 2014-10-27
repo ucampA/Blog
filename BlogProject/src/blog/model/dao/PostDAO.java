@@ -40,7 +40,6 @@ public class PostDAO {
 	public static int insertPost(PostBean post) throws SQLException {
 		SqlSession session = DBUtil.getSqlSession(true);
 		try {
-			System.out.println("====" + post.getContent());
 			return session.insert("Post.insertPost", post);
 		} finally {
 			session.close();

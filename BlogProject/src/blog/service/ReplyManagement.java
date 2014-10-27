@@ -9,12 +9,11 @@ import blog.model.dao.RepleDAO;
 import blog.model.dto.RepleBean;
 
 public class ReplyManagement {
-
 	private static ReplyManagement instance = new ReplyManagement();
+	
 	public static ReplyManagement getInstance(){
 		return instance;
 	}
-	
 	
 	public void sendReple(RepleBean bean) throws SQLException {
 		int result = 0;
@@ -28,7 +27,6 @@ public class ReplyManagement {
 		}
 	}
 
-
 	public List repleList(int pno) throws RecordNotFoundException, SQLException {
 		List list = null;
 		list = RepleDAO.repleList(pno);
@@ -38,11 +36,9 @@ public class ReplyManagement {
 		return list;
 	}
 
-
 	public void deleteReple(int rno) throws RecordNotFoundException, SQLException {
 		int result = 0;
 		try {
-			System.out.println("reple service delete");
 			result = RepleDAO.deleteReple(rno);
 			if(result == 0){
 				throw new SQLException();
@@ -62,8 +58,5 @@ public class ReplyManagement {
 		} catch (SQLException e) {
 			throw e;
 		}
-		
 	}
-
-
 }

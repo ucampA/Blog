@@ -36,7 +36,6 @@ public class PostServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		try {
 			response.setContentType("text/html;charset=euc-kr");
-			System.out.println(BlogManagerment.getInstance().selectAll()+"출력하자");
 			request.setAttribute("postList", BlogManagerment.getInstance().selectAll());
 			request.getRequestDispatcher("common/suggest.jsp").forward(request, response);
 		} catch (SQLException e) {
@@ -76,7 +75,6 @@ public class PostServlet extends HttpServlet {
 			request.getRequestDispatcher("index.jsp?page=blog/detailContent.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("발생위치 bloController.detailContent");
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (RecordNotFoundException e) {
@@ -100,7 +98,6 @@ public class PostServlet extends HttpServlet {
 	
 	protected void deletePost(HttpServletRequest request, HttpServletResponse response){
 		int pno = Integer.parseInt(request.getParameter("pno"));
-		System.out.println("deletePost");
 		try {
 			blog.deletePostByNo(pno);
 			getAllPosts(request, response);
