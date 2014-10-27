@@ -15,7 +15,7 @@
 			<span class="repledate">${fn:substring(reple.writeday,0,16)}</span>
 			<c:if test="${sessionScope.userid==reple.userid }">
 				<span class="repledate">
-					<span onclick="updateRepleOpen(${reple.rno},${reple.pno },${reple.content })">수정</span>&nbsp;
+					<span onclick="updateRepleOpen(${reple.rno},${reple.pno})">수정</span>&nbsp;
 					<span onclick="deleteReple(${reple.rno})">삭제</span>
 				</span>
 			</c:if>
@@ -35,11 +35,10 @@
 		});
 	}
 	function updateRepleOpen(rno,pno,content){
-		//alert("update "+rno);
 		$.ajax({
 			type:"post",
     		url:"reple/repleUpdate.jsp",
-    		data: "rno=" +rno+ "&pno=" +pno+ "&content=" +content,
+    		data: "rno=" +rno+ "&pno=" +pno,
     		success:function(result){
       			$("#repleContent"+rno).html(result);
     		}
