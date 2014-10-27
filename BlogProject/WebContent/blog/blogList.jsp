@@ -10,24 +10,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<style>
+	.thTd {
+		width: 120px;
+		text-align: center;
+		height:25px;
+	}
+</style>
 </head>
 <body>
-<table>
-	<tr align="center" bgcolor="white">
-		<td>글번호</td><td width="150px">제목</td><td>ID</td><td>작성일</td><td>조회수</td>
-	</tr>
-	<c:forEach items="${blogs}" var="blog">
-		<c:if test="${blog.openState == 'O'}">
-			<tr align="center">
-				<td>${blog.no}</td>
-				<td><a href="con?action=detailContent&pno=${blog.no}">${blog.title}</a></td>
-				<td>${blog.userid}</td>
-				<td>${blog.writeday}</td>
-				<td>${blog.readcount}</td>
+	<center>
+		<br>
+		<table>
+			<tr align="center" bgcolor="white">
+				<th>글번호</th><th width="150px">제목</th><th>ID</th><th>작성일</th><th>조회수</th>
 			</tr>
-		</c:if>
-	</c:forEach>
-</table>
+			<c:forEach items="${blogs}" var="blog">
+				<c:if test="${blog.openState == 'O'}">
+					<tr align="center">
+						<td>${blog.no}</td>
+						<td><a href="con?action=detailContent&pno=${blog.no}">${blog.title}</a></td>
+						<td>${blog.userid}</td>
+						<td>${blog.writeday}</td>
+						<td>${blog.readcount}</td>
+					</tr>
+				</c:if>
+			</c:forEach>
+		</table>
+	</center>
 </body>
 </html>

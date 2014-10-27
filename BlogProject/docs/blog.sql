@@ -64,5 +64,8 @@ BEGIN
 	delete from blog where userid = :old.userid;
 END;
 /
+
+insert into member values('admin', 'admin', 'admin', '010-1111-1111', 'noBlog', 'A');
+
 commit;
 

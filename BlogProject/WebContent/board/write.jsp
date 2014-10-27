@@ -7,21 +7,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-게시글 쓰기
 	<center>
+	<br><br><font style="font-size:16pt;"><b>게시글 쓰기</b></font><br><br><br>
 	<form method="post" name="writeForm">
 		<table>
-			<tr><td>
-				<select id="openState">
-					<option>전체공개</option>
-					<option>비공개</option>
-				</select>
-			</td></tr>
-			<tr><td>제목</td></tr>
-			<tr><td><input type="text" name="title" size="55"></td></tr>
-			<tr><td>내용</td></tr>
-			<tr><td><textarea rows="10" cols="60" name="content"></textarea> </td></tr>
-			<tr><td align="right"><input type="button" onclick="postWrite()" value="등록"></td></tr>
+			<tr>
+				<td style="width:80px;">공개설정</td>
+				<td>
+					<select id="openState">
+						<option>전체공개</option>
+						<option>비공개</option>
+					</select>
+				</td>
+			</tr>
+			<tr><td colspan="2">제목</td></tr>
+			<tr><td colspan="2"><input type="text" name="title" size="55"></td></tr>
+			<tr><td colspan="2">내용</td></tr>
+			<tr><td colspan="2"><textarea rows="10" cols="60" name="content"></textarea> </td></tr>
+			<tr><td colspan="2" align="right"><input type="button" onclick="postWrite()" value="등록"></td></tr>
 		</table>
 		<input type="hidden" name="openState">
 	</form>

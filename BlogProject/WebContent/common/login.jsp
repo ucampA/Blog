@@ -8,10 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<center>
 	<c:choose>
 		<c:when test="${sessionScope.userid==null }">
+			<center>
 			<form action="con?action=login" method="post" name="loginFrm">
+				<br>
 				<table align="center">
 					<tr>
 						<td>ID</td>
@@ -19,29 +20,30 @@
 					</tr>
 					<tr>
 						<td>PW</td>
-						<td><input type="text" name="userpw" size="10"></td>
+						<td><input type="password" name="userpw" size="10"></td>
 					</tr>
 					<tr>
-						<td colspan="2">
+						<td colspan="2" align="center">
+							<br>
 							<input type="submit" value="Login">
 							<input type="button" value="Join" onclick="javascript:location='index.jsp?page=member/join.jsp'">
 						</td>
 					</tr>
 				</table>	
 			</form>
+			</center>
 		</c:when>
 		<c:otherwise>
 			<center>
 				<br>
 				<b>${sessionScope.userid }´Ô ¾È³çÇÏ¼¼¿ä.</b><br><br>
-				<a href="con?action=update">Á¤º¸¼öÁ¤</a>&nbsp;
+				<a href="con?action=update">Á¤º¸¼öÁ¤</a><br>
 				<a href="con?action=logout">·Î±×¾Æ¿ô</a><br>
 				<c:if test="${sessionScope.userid != 'admin'}">
-				<a href="con?action=deleteMemberByID&id=${sessionScope.userid}">Å»ÅðÇÏ±â</a>
+					<a href="con?action=deleteMemberByID&id=${sessionScope.userid}">Å»ÅðÇÏ±â</a>
 				</c:if>
 			</center>
 		</c:otherwise>	
 	</c:choose>
-	</center>
 </body>
 </html>
