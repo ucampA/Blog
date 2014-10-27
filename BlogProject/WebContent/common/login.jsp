@@ -35,7 +35,8 @@
 				<br>
 				<b>${sessionScope.userid }님 안녕하세요.</b><br><br>
 				<a href="con?action=update">정보수정</a>&nbsp;
-				<a href="con?action=logout">로그아웃</a>
+				<a href="con?action=logout">로그아웃</a><br>
+				<a href="con?action=deleteMemberByID&id=${sessionScope.userid}">탈퇴하기</a>
 			</center>
 		</c:otherwise>	
 	</c:choose>

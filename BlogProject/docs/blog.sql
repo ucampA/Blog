@@ -39,8 +39,7 @@ CREATE TABLE reple (
 	content varchar(500) not null,
 	writeday date not null,
 	userid	varchar(20),
-	pno number(5),
-	constraint reple_pno_fk foreign key(pno) references post(no)
+	pno number(5)
 );
 
 CREATE SEQUENCE seq_reple_no INCREMENT BY 1 START WITH 1;
@@ -56,5 +55,14 @@ END;
 /
 commit;
 
-
+CREATE OR REPLACE trigger deletePostAndPost 
+after
+	delete on member
+	for each row
+BEGIN
+	delete from post where userid = :old.userid;
+	delete from blog where userid = :old.userid;
+END;
+/
+commit;
 

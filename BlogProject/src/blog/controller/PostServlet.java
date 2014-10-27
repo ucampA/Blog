@@ -71,6 +71,7 @@ public class PostServlet extends HttpServlet {
 	
 	protected void detailContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			blog.updateReadCount(Integer.parseInt(request.getParameter("pno")));
 			request.setAttribute("blog", blog.selectPostByNo(Integer.parseInt(request.getParameter("pno"))));
 			request.getRequestDispatcher("index.jsp?page=blog/detailContent.jsp").forward(request, response);
 		} catch (SQLException e) {

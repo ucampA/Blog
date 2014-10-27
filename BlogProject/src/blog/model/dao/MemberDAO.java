@@ -53,7 +53,7 @@ public class MemberDAO {
 	public static int deleteMemberByID(String id) throws SQLException {
 		SqlSession session = DBUtil.getSqlSession(true);
 		try {
-			return session.update("Member.deleteMemberByID", id);
+			return session.delete("Member.deleteMemberByID", id);
 		} finally {
 			session.close();
 		}

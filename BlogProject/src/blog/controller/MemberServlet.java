@@ -17,7 +17,7 @@ import blog.service.MemberManagerment;
 public class MemberServlet extends HttpServlet {
 	private MemberManagerment member = MemberManagerment.getInstance();
 	
-	public void login(HttpServletRequest request, HttpServletResponse response) {
+	public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
 			String userid = request.getParameter("userid");
@@ -29,7 +29,9 @@ public class MemberServlet extends HttpServlet {
 					session.setAttribute("userid", userid);
 					session.setAttribute("blogName", member.selectMemberByID(userid).getBlogname());
 				}else{
-					System.out.println("비번 틀림");
+					request.setAttribute("msg", "PASSWORD 에러");
+					request.getRequestDispatcher("index.jsp?page=msg/failed.jsp").forward(request, response);
+					return;
 				}
 			}else{
 				System.out.println("ID 틀림");
@@ -42,7 +44,8 @@ public class MemberServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (RecordNotFoundException e) {
-			e.printStackTrace();
+			request.setAttribute("msg", "등록된 ID가 없습니다.");
+			request.getRequestDispatcher("index.jsp?page=msg/failed.jsp").forward(request, response);
 		}
 	}
 	
@@ -58,7 +61,7 @@ public class MemberServlet extends HttpServlet {
 		}
 	}
 	
-	protected void join(HttpServletRequest request, HttpServletResponse response) {
+	protected void join(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberBean bean = new MemberBean();
 		bean.setUserid(request.getParameter("id"));
 		bean.setUserpw(request.getParameter("pw"));
@@ -77,7 +80,8 @@ public class MemberServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e){
-			System.out.println("ID 중복");
+			request.setAttribute("msg", "가입실패 ID 중복");
+			request.getRequestDispatcher("index.jsp?page=msg/failed.jsp").forward(request, response);
 		}
 	}
 	
@@ -133,4 +137,26 @@ public class MemberServlet extends HttpServlet {
 			System.out.println("발생위치 bloController.memberList");
 		}
 	}
+
+	public void deleteMemberByID(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			System.out.println("탈퇴하기");
+			if(MemberDAO.deleteMemberByID(request.getParameter("id"))!=0){
+				if(request.getSession().getAttribute("userid").equals("admin")){
+					return;
+				}else{
+					System.out.println("엘즈");
+					request.getSession().invalidate();
+					request.setAttribute("msg", "탈퇴성공");
+					request.getRequestDispatcher("index.jsp?page=msg/success.jsp").forward(request, response);
+					return;
+				}
+			}
+				System.out.println("이프문밖");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("발생위치 bloController.memberList");
+		}
+	}
+	
 }

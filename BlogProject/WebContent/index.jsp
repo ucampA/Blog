@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="container">
-		<div id="header"><jsp:include page="common/header.jsp"/>...${param.action}...${requestScope.page }</div>
+		<div id="header"><jsp:include page="common/header.jsp"/></div>
 		<div id="search">
 			<jsp:include page="common/search.html"/>
 		</div>
