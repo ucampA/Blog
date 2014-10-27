@@ -11,9 +11,9 @@
 <body onload="repleList(${blog.no})">
 	
 	<div id="repleList"></div>
-	
+	<br>
 	<c:if test="${sessionScope.userid != null }">
-		reple writer ID: ${sessionScope.userid } 
+		¥Ò±€ ±€æ¥¿Ã ID: ${sessionScope.userid }<br><br>
 		<div class="reple">
 			<form name="repleFrm" method="post">
 				<input type="hidden" name="pno" value="${blog.no}">
